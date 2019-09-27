@@ -1,0 +1,33 @@
+<body style="background-color: skyblue;">
+<mat-card class="register-card">
+  <mat-card-header>
+    <mat-card-title>Register Yourself!</mat-card-title>
+    <mat-card-subtitle>Create your fundooApp Account Today!</mat-card-subtitle>
+  </mat-card-header>
+  <mat-form-field appearance="outline" class="reg-input-name">
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="Enter your first name" required>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="reg-input-name">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Enter your last name" required>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="reg-input">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Enter your email" required>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="reg-input">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="reg-input">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput placeholder="Confirm your password" [type]="hide ? 'password' : 'text'" required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Register</button>
+  </mat-card-actions>  
+</mat-card>
+</body>
