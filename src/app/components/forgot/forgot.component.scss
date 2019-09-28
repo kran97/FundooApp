@@ -1,7 +1,7 @@
-.register-card{
+.login-card{
     width: 500px;
     margin-left: 31%;
-    margin-top: 50px;
+    margin-top: 70px;
     position: absolute;
 }
 
@@ -20,19 +20,4 @@
 
 .reg-input {
     width: 100%;
-}
-
-.gotoReg{
-    float: right;
-    margin-top: 5px;
-    margin-right: 7 px;
-}
-
-a:link{
-    text-decoration: none;
-    color: indigo;
-}
-a:visited{
-    text-decoration: none;
-    color: indigo;
 }

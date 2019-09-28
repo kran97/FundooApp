@@ -2,16 +2,10 @@
     <mat-card class="login-card">
       <mat-card-header> 
         
-        <mat-card-title class="card-title"><b>Login Here!</b></mat-card-title>
-        <mat-card-subtitle>Welcome to fundooApp!</mat-card-subtitle>
+        <mat-card-title class="card-title"><b>Enter New Password!</b></mat-card-title>
+        <!-- <mat-card-subtitle>Welcome to fundooApp!</mat-card-subtitle> -->
         <img mat-card-avatar src="../../../assets/logo.png" class="mat-header-img">
       </mat-card-header>
-    
-      <mat-form-field appearance="outline" class="reg-input">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Enter your email" name="email" [formControl]="email" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
     
       <mat-form-field appearance="outline" class="reg-input">
           <mat-label>Password</mat-label>
@@ -19,11 +13,9 @@
           <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
           <mat-error *ngIf="password.invalid">{{getErrorPassword()}}</mat-error>
       </mat-form-field>
-      <a routerLink="/forgot" (click)="gotoForgot()" style="font-size: 12px;">Forgot Password?</a>
+
       <mat-card-actions>
-        
-        <button mat-raised-button color="accent">Login</button>
-        <b><a class="gotoReg" routerLink="/register" (click)="gotoRegister()">First Time Here?</a></b>
+        <button mat-raised-button color="accent">Reset</button>
       </mat-card-actions>  
   </mat-card>
 </body> 

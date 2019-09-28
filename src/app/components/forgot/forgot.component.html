@@ -1,0 +1,20 @@
+<body style="background-color:blanchedalmond;">  
+    <mat-card class="login-card">
+      <mat-card-header> 
+        
+        <mat-card-title class="card-title"><b>Enter Email Here!</b></mat-card-title>
+        <mat-card-subtitle>Enter your registered email to receive reset link</mat-card-subtitle>
+        <img mat-card-avatar src="../../../assets/logo.png" class="mat-header-img">
+      </mat-card-header>
+    
+      <mat-form-field appearance="outline" class="reg-input">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Enter your email" name="email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    
+      <mat-card-actions>
+        <button mat-raised-button color="accent">Send Mail</button>
+      </mat-card-actions>  
+  </mat-card>
+</body> 

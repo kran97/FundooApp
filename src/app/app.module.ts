@@ -11,12 +11,18 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ForgotComponent } from './components/forgot/forgot.component';
+import { ResetComponent } from './components/reset/reset.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,10 @@ import { LoginComponent } from './components/login/login.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
