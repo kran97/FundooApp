@@ -4,19 +4,31 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotComponent } from "./components/forgot/forgot.component";
 import { ResetComponent } from "./components/reset/reset.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { DialogComponent } from "./components/dialog/dialog.component";
+import { TakeNotesComponent } from "./components/take-notes/take-notes.component";
 
 const routes: Routes = [
   {
     path: '', component: LoginComponent
   },
   {
-    path: 'register', component: RegisterComponent
+    path: 'signup', component: RegisterComponent
   },
   {
     path: 'forgot', component: ForgotComponent
   },
   {
     path: 'reset', component: ResetComponent
+  },
+  {
+    path: 'dashboard', component: DashboardComponent
+  },
+  {
+    path: 'dialog', component: DialogComponent
+  },
+  {
+    path: 'takeNotes', component: TakeNotesComponent
   },
   {
     path: '**', redirectTo: ''

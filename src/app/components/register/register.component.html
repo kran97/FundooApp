@@ -1,26 +1,28 @@
- <body style="background-color:blanchedalmond;">  
-<mat-card class="register-card">
-  <mat-card-header> 
-    
+ <body style="background-color:blanchedalmond;" fxFlex="100" fxLayoutAlign="space-around center">  
+<mat-card class="register-card" fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="40" fxFlex.sm="92" fxFlex.xs="100">
+  <mat-card-header>
     <mat-card-title class="card-title"><b>Register Yourself!</b></mat-card-title>
     <mat-card-subtitle>Create your fundooApp Account Today!</mat-card-subtitle>
     <img mat-card-avatar src="../../../assets/logo.png" class="mat-header-img">
   </mat-card-header>
-
+<div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column">
   <mat-form-field appearance="outline" class="reg-input-name">
     <mat-label>First Name</mat-label>
-    <input matInput placeholder="Enter your first name" required>
+    <input matInput placeholder="Enter your first name" name="firstName" [formControl]="firstName" required>
+    <mat-error *ngIf="firstName.invalid">{{getErrorFirstName()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="reg-input-name">
     <mat-label>Last Name</mat-label>
-    <input matInput placeholder="Enter your last name" required>
+    <input matInput placeholder="Enter your last name" name="lastName" [formControl]="lastName" required>
+    <mat-error *ngIf="lastName.invalid">{{getErrorLastName()}}</mat-error>
   </mat-form-field>
-
+</div>
+<div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutAlign.sm="space-around center" fxLayoutAlign.xs="space-around center">
   <mat-form-field appearance="outline" class="reg-input">
     <mat-label>Email</mat-label>
     <input matInput placeholder="Enter your email" name="email" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    <mat-error *ngIf="email.invalid">{{getErrorEmail()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="reg-input">
@@ -32,14 +34,14 @@
 
   <mat-form-field appearance="outline" class="reg-input">
       <mat-label>Confirm Password</mat-label>
-      <input matInput placeholder="Confirm your password" name="confirmpassword" [type]="hide ? 'password' : 'text'" required> <!--pattern="{{ password.value }}" -->
+      <input matInput placeholder="Confirm your password" [formControl]="confirmpassword" name="confirmpassword" [type]="hide ? 'password' : 'text'" pattern="{{ password.value }}" required> <!--pattern="{{ password.value }}" -->
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-      <!-- <mat-error *ngIf="confirmpassword.errors.pattern">Confirm password does not match password</mat-error> -->
+      <mat-error *ngIf="confirmpassword.invalid">{{getErrorConfirmPassword()}}</mat-error>
   </mat-form-field>
-
-  <mat-card-actions>
-    <button mat-raised-button color="accent">Register</button>
-    <b><a class="gotoReg" routerLink="" (click)="gotoLogin()">Already a user?</a></b>
-  </mat-card-actions>  
+</div>
+  <mat-card-actions fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-around center">
+    <button class="regButton" mat-raised-button  (click)="OnRegister()">Register</button>
+    <b><a class="gotoReg" routerLink="">Already a user?</a></b>
+  </mat-card-actions>
 </mat-card>
-</body> 
+</body>

@@ -1,0 +1,53 @@
+.mat-toolbar {
+    background-color: white;
+    border-bottom: lightgray 1px solid;
+    width: 100%;
+    padding: 5px;
+}
+
+.search-bar {
+    justify-content: center;
+    width: 100%;
+}
+
+.searchbar {
+    // background-color: darkgrey;
+    border: none;
+    outline: none;
+    user-select: none;
+    font-size: 75%;
+    width: 100%;
+}
+
+.example-container {
+    height: 100vh;
+    background-color: white;
+}
+.example-sidenav {
+    width:25%;
+}
+
+.logo {
+    height: 100%;
+    width: 100%;
+}
+.logo-btn {
+    // height: 15%;
+    width: 15%;
+    min-width: 40%;
+}
+
+// .example-container {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//   }
+  
+//   .example-events {
+//     width: 300px;
+//     height: 200px;
+//     overflow: auto;
+//     border: 1px solid #555;
+//   }

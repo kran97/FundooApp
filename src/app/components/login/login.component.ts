@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)])
-  router: Router;
+  private router: Router;
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :

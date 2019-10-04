@@ -1,8 +1,13 @@
+body{
+    height: 100vh;
+}
+
 .login-card{
-    width: 500px;
-    margin-left: 31%;
-    margin-top: 70px;
-    position: absolute;
+    // width: 500px;
+    // margin-left: 31%;
+    // margin-top: 70px;
+    // position: absolute;
+    height: 60vh;
 }
 
 .card-title{
@@ -10,14 +15,14 @@
 }
 
 .mat-header-img{
-    width: 120px;
-    height: 90px;
+    // width: 120px;
+    // height: 90px;
 }
 
 .reg-input-name {
-    margin-right: 20px;
+    // margin-right: 20px;
 }
 
 .reg-input {
-    width: 100%;
+    // width: 100%;
 }

@@ -1,19 +1,19 @@
-<body style="background-color:blanchedalmond;">  
-    <mat-card class="login-card">
+<body style="background-color:blanchedalmond;" fxFlex="100" fxLayoutAlign="space-around center">  
+    <mat-card class="login-card" fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="30" fxFlex.sm="92" fxFlex.xs="100">
+
       <mat-card-header> 
-        
         <mat-card-title class="card-title"><b>Enter Email Here!</b></mat-card-title>
         <mat-card-subtitle>Enter your registered email to receive reset link</mat-card-subtitle>
         <img mat-card-avatar src="../../../assets/logo.png" class="mat-header-img">
       </mat-card-header>
     
-      <mat-form-field appearance="outline" class="reg-input">
+      <mat-form-field appearance="outline" class="reg-input" fxLayoutAlign.xs="space-around center">
         <mat-label>Email</mat-label>
         <input matInput placeholder="Enter your email" name="email" [formControl]="email" required>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     
-      <mat-card-actions>
+      <mat-card-actions fxLayout.sm="column" fxLayoutAlign.sm="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="space-around center">
         <button mat-raised-button color="accent">Send Mail</button>
       </mat-card-actions>  
   </mat-card>
