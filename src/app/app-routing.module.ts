@@ -7,6 +7,7 @@ import { ResetComponent } from "./components/reset/reset.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { TakeNotesComponent } from "./components/take-notes/take-notes.component";
+import { IconListComponent } from './components/icon-list/icon-list.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path: 'takeNotes', component: TakeNotesComponent
+  },
+  {
+    path: 'icon-list', component: IconListComponent
   },
   {
     path: '**', redirectTo: ''

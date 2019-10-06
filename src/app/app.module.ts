@@ -27,6 +27,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { TakeNotesComponent } from './components/take-notes/take-notes.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { IconListComponent } from './components/icon-list/icon-list.component';
+import { NoteServiceService } from "./services/notes-services/note-service.service";
+import {TextFieldModule} from '@angular/cdk/text-field';
+import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ResetComponent,
     DashboardComponent,
     DialogComponent,
-    TakeNotesComponent
+    TakeNotesComponent,
+    IconListComponent,
+    DisplayNotesComponent
   ],
   imports: [
     BrowserModule,
@@ -59,10 +65,12 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatListModule,
     MatDividerModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    TextFieldModule
   ],
   providers: [
-    UserServicesService
+    UserServicesService,
+    NoteServiceService
   ],
   bootstrap: [AppComponent]
 })

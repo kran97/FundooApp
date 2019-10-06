@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { DialogData } from "../dashboard/dashboard.component";
 
 @Component({

@@ -1,3 +1,4 @@
+<div fxLayout="column" fxLayoutAlign="space-around stretch">
 <mat-toolbar class="mat-toolbar" fxLayoutAlign="start center" fxLayout="row">
     <button mat-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
@@ -5,17 +6,18 @@
 
     <img fxFlex="4" (click)="gotoDashboard()" class="logo" src="../../assets/download.png" alt="FundooApp">
     
-    <mat-form-field appearance="outline" class="search-bar" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-card class="search-bar" fxLayout="row" fxLayoutAlign="space-around center">
         <button mat-icon-button>
             <mat-icon matPrefix>search</mat-icon>
         </button>
         <input matInput type="search" id="site-search" name="q" placeholder="Search" class="searchbar"
             aria-label="search">
-    </mat-form-field>
+    </mat-card>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-button (click)="gotoDashboard()"><mat-icon>refresh</mat-icon></button>
 
-    <button mat-button (click)="gotoDashboard()"><mat-icon>refresh</mat-icon></button>
-
-    <button mat-button (click)="gotoDashboard()"><mat-icon>settings</mat-icon></button>
+        <button mat-button (click)="gotoDashboard()"><mat-icon>settings</mat-icon></button>
+    </div>
 </mat-toolbar>
 
 <mat-drawer-container class="example-container" autosize>
@@ -50,3 +52,4 @@
     </mat-drawer>
     <app-take-notes></app-take-notes>
 </mat-drawer-container>
+</div>

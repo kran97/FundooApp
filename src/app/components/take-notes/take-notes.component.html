@@ -1,4 +1,41 @@
-<mat-accordion fxLayoutAlign="space-around stretch">
+<div fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-card [class.mat-elevation-z5]="isActive" fxLayout="row" class="mat-card-note" fxLayoutAlign="space-between"
+      fxFlex="50" fxLayoutGap="100">
+  
+      <input class="take-note-input" matInput placeholder="Take a note..." (click)="Toggle()" *ngIf="hide" fxFlex="100" fxLayout="row">
+
+      <div *ngIf="show" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="space-between end">
+          <textarea class="text-area" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"></textarea>
+          <button mat-icon-button>
+            <mat-icon matSuffix>turned_in_not</mat-icon>
+          </button>   
+        </div>
+        <div>
+          <textarea class="text-area" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" [formControl]="note" matInput placeholder="Take a note..."></textarea></div>
+        <mat-action-row fxLayout="row" fxLayoutAlign="space-around stretch">
+            <app-icon-list></app-icon-list>
+          <button style="float: right" fxLayoutAlign="end end" mat-button (click)="close()">Close</button>
+        </mat-action-row>
+      </div>
+      
+    </mat-card>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-accordion fxLayoutAlign="space-around stretch">
   <mat-expansion-panel [expanded]="step === 0" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-description>
@@ -19,49 +56,4 @@
       </mat-action-row>
 
   </mat-expansion-panel>
-</mat-accordion>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <mat-accordion>
-    <mat-expansion-panel class="take-note">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Create a note
-        </mat-panel-title>
-      
-      </mat-expansion-panel-header>
-  
-      <mat-form-field>
-        <input matInput placeholder="title">
-      </mat-form-field>
-  <div></div>
-      <mat-form-field>
-          <textarea matInput
-          cdkTextareaAutosize
-          #autosize="cdkTextareaAutosize"
-          cdkAutosizeMinRows="1"
-          cdkAutosizeMaxRows="10" placeholder="take a note"></textarea>
-      </mat-form-field>
-       
-
-   <app-icon></app-icon>
-    </mat-expansion-panel>
-    
-  </mat-accordion> -->
+</mat-accordion> -->
