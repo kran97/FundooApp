@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
         console.log(data.data);
         if(data.data.success){
           console.log("Registration status "+ data.data.success);
-          this.router.navigate(['']);
+          this.router.navigate(['login']);
         }
       }
     })

@@ -17,13 +17,21 @@ export class DashboardComponent implements OnInit {
   label: string;
 
   constructor(private router:Router, public dialog: MatDialog) { }
+  name: string;
 
   ngOnInit() {
+    this.name = localStorage.getItem('firstName');
   }
 
   gotoDashboard() {
     this.router.navigate(['dashboard'])
   }
+
+  exitApp() {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
+  
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',

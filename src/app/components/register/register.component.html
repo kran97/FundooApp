@@ -1,4 +1,4 @@
- <body style="background-color:blanchedalmond;" fxFlex="100" fxLayoutAlign="space-around center">  
+<div fxFlex="100" fxLayoutAlign="space-around center">  
 <mat-card class="register-card" fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="40" fxFlex.sm="92" fxFlex.xs="100">
   <mat-card-header>
     <mat-card-title class="card-title"><b>Register Yourself!</b></mat-card-title>
@@ -40,8 +40,8 @@
   </mat-form-field>
 </div>
   <mat-card-actions fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-around center">
-    <button class="regButton" mat-raised-button  (click)="OnRegister()">Register</button>
-    <b><a class="gotoReg" routerLink="">Already a user?</a></b>
+    <button class="regButton" mat-raised-button (click)="OnRegister()">Register</button>
+    <b><a class="gotoReg" routerLink="login">Already a user?</a></b>
   </mat-card-actions>
 </mat-card>
-</body>
+</div>

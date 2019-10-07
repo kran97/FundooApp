@@ -8,10 +8,13 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { TakeNotesComponent } from "./components/take-notes/take-notes.component";
 import { IconListComponent } from './components/icon-list/icon-list.component';
+import { AuthGuard } from "../auth.guard";
+import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 
 const routes: Routes = [
   {
-    path: '', component: LoginComponent
+    
+    path: 'login', component: LoginComponent
   },
   {
     path: 'signup', component: RegisterComponent
@@ -23,7 +26,9 @@ const routes: Routes = [
     path: 'reset', component: ResetComponent
   },
   {
-    path: 'dashboard', component: DashboardComponent
+    path: '', component: DashboardComponent, canActivate:[AuthGuard], children:[
+      
+    ]
   },
   {
     path: 'dialog', component: DialogComponent
@@ -33,6 +38,9 @@ const routes: Routes = [
   },
   {
     path: 'icon-list', component: IconListComponent
+  },
+  {
+    path: 'display-cards', component: DisplayNotesComponent
   },
   {
     path: '**', redirectTo: ''

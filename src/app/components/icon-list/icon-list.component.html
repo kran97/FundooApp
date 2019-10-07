@@ -1,4 +1,4 @@
-<div fxLayout="row" fxFlex="100" >
+<div fxLayout="row" fxFlex="100">
     <button mat-button  matTooltip="Add image">
       <mat-icon>image</mat-icon>
     </button>
@@ -8,14 +8,12 @@
     <button mat-button matTooltip="Change colour" [matMenuTriggerFor]="chip">
       <mat-icon>palette</mat-icon>
     </button>
-  
-    <mat-menu #chip>
-      <button mat-button class="yellowchip"></button>
-      <button mat-button class="redchip"></button>
-      <button mat-button class="greenchip"></button>
-      <button mat-button class="bluechip"></button>
-      <button mat-button class="orangechip"></button>
-      <button mat-button class="lightbluechip"></button>
+
+  <mat-menu #chip>
+    <mat-grid-list cols="3" rowHeight="25px">
+      <mat-grid-tile *ngFor="let tile of tiles"
+      [style.background]="tile.color" class="colorPalette"></mat-grid-tile>
+    </mat-grid-list>
   </mat-menu>
   
     <button mat-button matTooltip="Archive">

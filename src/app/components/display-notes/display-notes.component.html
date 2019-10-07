@@ -1,5 +1,5 @@
 <div fxLayout="row wrap" class="cardcontainer">
-    <mat-card *ngFor="let record of records" fxFlex="30" (click)="openDialog(this.record)">
+    <mat-card *ngFor="let record of records" fxFlex="30">
       <p>{{record.title}}</p>
       <p>{{record.description}}</p>
       <div fxLayoutAlign="start start">

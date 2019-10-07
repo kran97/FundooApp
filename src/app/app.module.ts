@@ -31,6 +31,8 @@ import { IconListComponent } from './components/icon-list/icon-list.component';
 import { NoteServiceService } from "./services/notes-services/note-service.service";
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { DisplayNotesComponent } from './components/display-notes/display-notes.
     MatDividerModule,
     MatDialogModule,
     MatExpansionModule,
-    TextFieldModule
+    TextFieldModule,
+    MatGridListModule,
+    MatTooltipModule
   ],
   providers: [
     UserServicesService,

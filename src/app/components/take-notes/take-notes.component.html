@@ -13,9 +13,9 @@
         </div>
         <div>
           <textarea class="text-area" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" [formControl]="note" matInput placeholder="Take a note..."></textarea></div>
-        <mat-action-row fxLayout="row" fxLayoutAlign="space-around stretch">
+        <mat-action-row fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutAlign.sm="center center">
             <app-icon-list></app-icon-list>
-          <button style="float: right" fxLayoutAlign="end end" mat-button (click)="close()">Close</button>
+          <button style="float: right" matTooltip="Close and Save" fxLayoutAlign="end end" mat-button (click)="close()">Close</button>
         </mat-action-row>
       </div>
       
