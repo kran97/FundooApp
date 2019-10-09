@@ -17,14 +17,25 @@ export class DashboardComponent implements OnInit {
   label: string;
 
   constructor(private router:Router, public dialog: MatDialog) { }
-  name: string;
-
+  
   ngOnInit() {
-    this.name = localStorage.getItem('firstName');
+    this.router.navigate(['notes']);
   }
 
   gotoDashboard() {
-    this.router.navigate(['dashboard'])
+    this.router.navigate([''])
+  }
+  gotoNotes() {
+    this.router.navigate(['notes'])
+  }
+  gotoReminder() {
+    this.router.navigate(['reminder'])
+  }
+  gotoArchive() {
+    this.router.navigate(['archive'])
+  }
+  gotoTrash() {
+    this.router.navigate(['trash'])
   }
 
   exitApp() {
@@ -44,19 +55,3 @@ export class DashboardComponent implements OnInit {
   }
 
 }
-
-// @Component({
-//   selector: 'dialog',
-//   templateUrl: 'dialog.component.html',
-// })
-// export class Dialog {
-
-//   constructor(
-//     public dialogRef: MatDialogRef<Dialog>,
-//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-
-// }

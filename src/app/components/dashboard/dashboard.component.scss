@@ -47,6 +47,14 @@
     cursor: pointer;
 }
 
+.nav-btn {
+    cursor: pointer;
+    width: 100%;
+}
+.nav-btn:hover {
+    background-color: #feefc3;
+    border-radius: 0px 50px 50px 0px;
+}
 
 // .example-container {
 //     position: absolute;

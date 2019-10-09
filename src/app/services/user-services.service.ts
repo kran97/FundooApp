@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "../../environments/environment";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class UserServicesService {
   {
     console.log(msg);
   }
+
+  private messageSource = new BehaviorSubject('');
+  currentMessage = this.messageSource.asObservable();
+  message : string;
 
   link : string = environment.baseUrl;
 
@@ -55,6 +60,20 @@ export class UserServicesService {
       formBody.push(encodedKey+'='+encodedValue);
     }
     return formBody.join ('&');
+  }
+
+  changeMessage(message){
+    this.messageSource.next(message);
+  }
+
+  noteTrashService(options) {
+    let httpOptions={
+      headers : new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':localStorage.getItem('token')
+      })
+    }
+    return this.http.post(this.link+options.purpose, options.data, httpOptions);
   }
 
 }

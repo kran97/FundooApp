@@ -16,14 +16,24 @@ export class IconListComponent implements OnInit {
     {color: 'lightgreen'},
     {color: 'lightpink'},
     {color: '#DDBDF1'},
+    {color: '#F44336'},
+    {color: '#64B5F6'},
   ];
 
-  message: string = "Saving.."
+  message: string = "Deleting note..."
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeColor() {
+    this.messageEvent.emit(this.message);
+  }
+
+  deleteNote() {
+    this.messageEvent.emit(this.message);
   }
 
 }

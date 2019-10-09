@@ -33,6 +33,10 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { NotesComponent } from './components/notes/notes.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     DialogComponent,
     TakeNotesComponent,
     IconListComponent,
-    DisplayNotesComponent
+    DisplayNotesComponent,
+    NotesComponent,
+    ReminderComponent,
+    ArchiveComponent,
+    TrashComponent
   ],
   imports: [
     BrowserModule,

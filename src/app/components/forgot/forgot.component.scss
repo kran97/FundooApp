@@ -1,17 +1,22 @@
-body{
+div{
     height: 100vh;
 }
 
-.login-card{
+.forgot-card{
     // width: 500px;
     // margin-left: 31%;
     // margin-top: 70px;
     // position: absolute;
-    height: 60vh;
+    height: 50vh;
 }
 
 .card-title{
-    color: maroon;
+    color: #4285F4;
+}
+
+.btn{
+    color: white;
+    background-color: #4285F4;
 }
 
 .mat-header-img{

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl} from '@angular/forms';
 import { Note } from "../../models/note.model";
-// import { NoteServiceService } from "../../services/notes-services/note-service.service";
 import { UserServicesService } from "../../services/user-services.service";
+
 @Component({
   selector: 'app-take-notes',
   templateUrl: './take-notes.component.html',
@@ -13,15 +13,14 @@ export class TakeNotesComponent implements OnInit {
   show: boolean = false;
   hide: boolean = true;
   isActive: any = true;
-
-  message : string;
   
   title = new FormControl('');
   note = new FormControl('');
-  noteModel: Note;
+  noteModel: Note = new Note();
   options: any;
+  message : string;
 
-  constructor(private noteService: UserServicesService) { } //NoteServiceService
+  constructor(private noteService: UserServicesService) { }
 
   ngOnInit() {
   }
@@ -44,6 +43,7 @@ export class TakeNotesComponent implements OnInit {
     }
     this.noteService.noteServices(this.options).subscribe((Object) =>{
       console.log(Object);
+      this.noteService.changeMessage('note saved');
     }, (error) => {
       console.log(error);
     });

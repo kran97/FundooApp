@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
       lastName : this.lastName.value,
       email : this.email.value,
       password : this.password.value,
-      service : "basic"
+      service : "advance"
     }
     let options = {
       data : this.userObj,

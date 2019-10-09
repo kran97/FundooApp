@@ -30,15 +30,17 @@
     <mat-drawer-container class="example-container" autosize>
         <mat-drawer #drawer class="example-sidenav" mode="side">
             <mat-list fxLayout="column">
-                <mat-list-item fxLayout="row" fxLayoutAlign="start center">
-                    <button mat-button>
-                        <mat-icon matListIcon>note_add</mat-icon>Notes
-                    </button>
+                <mat-list-item>
+                    <div (click)="gotoNotes()" class="nav-btn" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="40px">
+                        <mat-icon matListIcon>note_add</mat-icon>
+                        <p>Notes</p>
+                    </div>
                 </mat-list-item>
-                <mat-list-item fxLayout="row" fxLayoutAlign="start center">
-                    <button mat-button>
-                        <mat-icon mat-list-icon>notifications_none</mat-icon>Reminders
-                    </button>
+                <mat-list-item>
+                    <div (click)="gotoReminder()" fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px">
+                        <mat-icon mat-list-icon>notifications_none</mat-icon>
+                        <p>Reminders</p>
+                    </div>
                 </mat-list-item>
 
                 <mat-divider></mat-divider>
@@ -47,31 +49,33 @@
                 <mat-list-item *ngIf="label">
                     <mat-icon matListIcon>label</mat-icon>{{label}}
                 </mat-list-item>
-                <mat-list-item fxLayout="row" fxLayoutAlign="start center">
-                    <button mat-button (click)="openDialog()">
-                        <mat-icon matListIcon>edit</mat-icon>Edit labels
-                    </button>
+                <mat-list-item>
+                    <div fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px" (click)="openDialog()">
+                        <mat-icon matListIcon>edit</mat-icon>
+                        <p>Edit labels</p>
+                    </div>
                 </mat-list-item>
 
                 <mat-divider></mat-divider>
 
-                <mat-list-item fxLayout="row" fxLayoutAlign="start center">
-                    <button mat-button>
-                        <mat-icon matListIcon>archive</mat-icon>Archive
-                    </button>
+                <mat-list-item>
+                    <div (click)="gotoArchive()" fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px">
+                        <mat-icon matListIcon>archive</mat-icon>
+                        <p>Archive</p>
+                    </div>
                 </mat-list-item>
-                <mat-list-item fxLayout="row" fxLayoutAlign="start center">
-                    <button mat-button>
-                        <mat-icon mat-list-icon>delete_outline</mat-icon>Trash
-                    </button>
+                <mat-list-item>
+                        <div (click)="gotoTrash()" fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px">
+                            <mat-icon matListIcon>delete_outline</mat-icon>
+                            <p>Trash</p>
+                        </div>
                 </mat-list-item>
 
             </mat-list>
 
         </mat-drawer>
         <div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="100">
-            <app-take-notes></app-take-notes>
-            <app-display-notes></app-display-notes>
+            <router-outlet></router-outlet>
         </div>
     </mat-drawer-container>
 </div>

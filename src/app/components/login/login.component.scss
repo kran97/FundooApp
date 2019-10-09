@@ -6,30 +6,17 @@ body{
 
 .login-card{
  height: 60vh;
+ margin-top: 6%;
 }
 
 .card-title{
     color: #4285F4;
 }
 
-.mat-header-img{
-    // width: 120px;
-    // height: 90px;
+.password-icon {
+    cursor: pointer;
 }
 
-// .reg-input-name {
-//     margin-right: 20px;
-// }
-
-.reg-input {
-    // width: 100%;
-}
-
-.gotoReg{
-    // float: right;
-    // margin-top: 0.1%;
-    // margin-right: 0.1%;
-}
 .loginButton{
     color: white;
     background-color: #4285F4;

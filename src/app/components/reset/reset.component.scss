@@ -2,27 +2,20 @@ body {
     height: 100vh;
 }
 
-.login-card{
+.reset-card{
     // width: 500px;
     // margin-left: 31%;
     // margin-top: 70px;
     // position: absolute;
-    height: 60vh;
+    height: 50vh;
+    margin-top: 6%;
 }
 
 .card-title{
-    color: maroon;
+    color: #4285F4;
 }
 
-.mat-header-img{
-    // width: 120px;
-    // height: 90px;
-}
-
-.reg-input-name {
-    // margin-right: 20px;
-}
-
-.reg-input {
-    // width: 100%;
+.reset-btn {
+    color: white;
+    background-color: #4285F4;
 }

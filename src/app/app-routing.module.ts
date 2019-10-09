@@ -10,6 +10,10 @@ import { TakeNotesComponent } from "./components/take-notes/take-notes.component
 import { IconListComponent } from './components/icon-list/icon-list.component';
 import { AuthGuard } from "../auth.guard";
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
+import { NotesComponent } from './components/notes/notes.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 const routes: Routes = [
   {
@@ -27,7 +31,10 @@ const routes: Routes = [
   },
   {
     path: '', component: DashboardComponent, canActivate:[AuthGuard], children:[
-      
+      {path: 'notes', component: NotesComponent},
+      {path: 'reminder', component: ReminderComponent},
+      {path: 'archive', component: ArchiveComponent},
+      {path: 'trash', component: TrashComponent}
     ]
   },
   {
