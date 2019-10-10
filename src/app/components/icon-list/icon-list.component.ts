@@ -11,16 +11,36 @@ export interface Tile {
 })
 export class IconListComponent implements OnInit {
 
-  tiles: Tile[] = [
-    {color: 'lightblue'},
-    {color: 'lightgreen'},
-    {color: 'lightpink'},
-    {color: '#DDBDF1'},
-    {color: '#F44336'},
-    {color: '#64B5F6'},
-  ];
+  colorArray =
+    [[
+      { 'color': '#B39DDB', 'name': 'purple' },
+      { 'color': '#F48FB1', 'name': 'pink' },
+      { 'color': '#FFAB40', 'name': 'brown' },
+      { 'color': '#E0E0E0', 'name': 'gray' }
+    ],
+    [
+      { 'color': '#FFFFFF', 'name': 'White' },
+      { 'color': '#E53935', 'name': 'Red' },
+      { 'color': '#EF6C00', 'name': 'Orange' },
+      { 'color': '#FFEB3B', 'name': 'Yellow' }],
+    [
+      { 'color': '#B2FF59', 'name': 'green' },
+      { 'color': '#69F0AE', 'name': 'teal' },
+      { 'color': '#81D4FA', 'name': 'blue' },
+      { 'color': '#0288D1', 'name': 'darkblue' }
+    ]]
 
-  message: string = "Deleting note..."
+  // tiles: Tile[] = [
+  //   {color: 'lightblue'},
+  //   {color: 'lightgreen'},
+  //   {color: 'lightpink'},
+  //   {color: '#DDBDF1'},
+  //   {color: '#F44336'},
+  //   {color: '#64B5F6'},
+  // ];
+
+  messageDelete: string = "Deleting note..."
+  messageArchive: string = "Archive..."
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor() { }
@@ -28,12 +48,16 @@ export class IconListComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeColor() {
-    this.messageEvent.emit(this.message);
+  changeColor(color :any) {
+    this.messageEvent.emit(color);
   }
 
   deleteNote() {
-    this.messageEvent.emit(this.message);
+    this.messageEvent.emit(this.messageDelete);
+  }
+
+  archiveNote() {
+    this.messageEvent.emit(this.messageArchive);
   }
 
 }

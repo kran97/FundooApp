@@ -1,3 +1,11 @@
-<p>
-  archive works!
-</p>
+<!-- <div class="master-div" fxLayout="column"  fxFlex="100"> -->
+    <div class="archive-divs" fxLayout="row wrap" class="cardcontainer" fxLayoutAlign="start center" fxFlex="100" fxLayoutGap="8px" fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxFlex.xs="100">
+      <mat-card class="archive-cards" *ngFor="let record of records" [ngStyle]="{'background-color': record.color}" fxFlex="25" fxLayout.xs="column wrap">
+        <p fxLayout.xs="row wrap">{{record.title}}</p>
+        <p fxLayout.xs="row wrap">{{record.description}}</p>
+        <div fxLayoutAlign="start start">
+          <app-icon-list (messageEvent)="deleteNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"></app-icon-list>
+        </div>
+      </mat-card>
+    </div>
+  <!-- </div> -->

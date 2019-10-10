@@ -37,6 +37,7 @@ import { NotesComponent } from './components/notes/notes.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { IconTrashComponent } from './components/icon-trash/icon-trash.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { TrashComponent } from './components/trash/trash.component';
     NotesComponent,
     ReminderComponent,
     ArchiveComponent,
-    TrashComponent
+    TrashComponent,
+    IconTrashComponent
   ],
   imports: [
     BrowserModule,

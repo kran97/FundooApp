@@ -1,9 +1,14 @@
-<div fxLayout="row wrap" class="cardcontainer">
-    <mat-card *ngFor="let record of records" fxFlex="30">
-      <p>{{record.title}}</p>
-      <p>{{record.description}}</p>
+<div class="master-div" fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="100">
+  <div fxLayoutAlign="space-around center">
+    <button mat-button class="empty-btn" (click)="deleteAll()">Empty Trash</button>
+  </div>
+  <div fxLayout="row wrap" class="cardcontainer" fxFlex="100" fxLayoutGap="8px" fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxFlex.xs="100">
+    <mat-card class="trash-card" *ngFor="let record of records" [ngStyle]="{'background-color': record.color}" fxFlex="25" fxLayout.xs="column wrap">
+      <p fxLayout.xs="row wrap">{{record.title}}</p>
+      <p fxLayout.xs="row wrap">{{record.description}}</p>
       <div fxLayoutAlign="start start">
-        <app-icon-list (messageEvent)="deleteNote($event, record.id)"></app-icon-list>
+        <app-icon-trash (messageEvent)="deleteForever($event, record.id)" (messageEvent)="restore($event, record.id)"></app-icon-trash>
       </div>
     </mat-card>
+  </div>
 </div>
