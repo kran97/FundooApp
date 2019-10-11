@@ -30,15 +30,6 @@ export class IconListComponent implements OnInit {
       { 'color': '#0288D1', 'name': 'darkblue' }
     ]]
 
-  // tiles: Tile[] = [
-  //   {color: 'lightblue'},
-  //   {color: 'lightgreen'},
-  //   {color: 'lightpink'},
-  //   {color: '#DDBDF1'},
-  //   {color: '#F44336'},
-  //   {color: '#64B5F6'},
-  // ];
-
   messageDelete: string = "Deleting note..."
   messageArchive: string = "Archive..."
   @Output() messageEvent = new EventEmitter<string>();

@@ -32,6 +32,23 @@ export class UserServicesService {
     return this.http.post(this.link+url, userObj);
   }
 
+  forgotService(url:string, userObj) {
+    return this.http.post(this.link+url, userObj);
+  }
+
+  resetService(options) {
+    console.log("Inside Reset Service...")
+    console.log("options++++++" , options)
+    let httpOptions = {
+      headers : new HttpHeaders({
+        'Content-type':'application/x-www-form-urlencoded',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    console.log("encoded data",this.getEncodedData(options.data) );
+    return this.http.post(this.link+options.purpose, this.getEncodedData(options.data), httpOptions);
+  }
+
   noteServices(options) {
     let httpOptions={
       headers : new HttpHeaders({
@@ -39,6 +56,8 @@ export class UserServicesService {
         'Authorization':localStorage.getItem('token')
       })
     }
+   
+    
     return this.http.post(this.link+options.purpose, this.getEncodedData(options.data), httpOptions);
   }
 

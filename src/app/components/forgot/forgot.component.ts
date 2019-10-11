@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { UserServicesService } from "../../services/user-services.service";
 
 @Component({
   selector: 'app-forgot',
@@ -11,17 +12,34 @@ export class ForgotComponent implements OnInit {
 
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required, Validators.minLength(8)])
-  router: Router;
+  isValid = false;
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :
     this.email.hasError('email') ? 'Not a valid email' : ''
   }
 
-  constructor() { }
+  constructor(private userService: UserServicesService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  sendMail() {
+    var user = {
+      "email" : this.email.value
+    }
+    let options = {
+      data : user,
+      purpose: 'user/reset'
+    }
+    console.log(options);
+    this.userService.forgotService(options.purpose, options.data).subscribe((response:any)=>{
+      console.log(response);
+      this.isValid = true;
+      this.router.navigate(['/reset']);
+    }, (error)=>{
+      console.log(error);
+    });
   }
 
 }

@@ -34,8 +34,7 @@ export class LoginComponent implements OnInit {
   OnLogin() {
     this.userObj = {
       email : this.email.value,
-      password : this.password.value,
-      service : "basic"
+      password : this.password.value
     }
     let options = {
       data : this.userObj,

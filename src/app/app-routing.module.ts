@@ -27,7 +27,7 @@ const routes: Routes = [
     path: 'forgot', component: ForgotComponent
   },
   {
-    path: 'reset', component: ResetComponent
+    path: 'resetpassword/:token', component: ResetComponent
   },
   {
     path: '', component: DashboardComponent, canActivate:[AuthGuard], children:[
