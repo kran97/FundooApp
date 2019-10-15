@@ -38,6 +38,7 @@ import { ReminderComponent } from './components/reminder/reminder.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { IconTrashComponent } from './components/icon-trash/icon-trash.component';
+import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { IconTrashComponent } from './components/icon-trash/icon-trash.component
     ReminderComponent,
     ArchiveComponent,
     TrashComponent,
-    IconTrashComponent
+    IconTrashComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,

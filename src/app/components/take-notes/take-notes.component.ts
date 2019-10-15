@@ -19,6 +19,7 @@ export class TakeNotesComponent implements OnInit {
   noteModel: Note = new Note();
   options: any;
   message : string;
+  color : any;
 
   constructor(private noteService: UserServicesService) { }
 
@@ -30,10 +31,15 @@ export class TakeNotesComponent implements OnInit {
     this.hide = !this.hide;
   }
 
+  colorChange($event) {
+    this.color = $event;
+  }
+
   close() {
     this.noteModel = {
       title: this.title.value,
-      description: this.note.value
+      description: this.note.value,
+      color: this.color
     }
 
     console.log(this.noteModel);
@@ -49,6 +55,11 @@ export class TakeNotesComponent implements OnInit {
     });
     this.show = !this.show;
     this.hide = !this.hide;
+    this.color = "#ffffff";
+    this.title = null;
+    this.note = null;
   }
+
+
 
 }

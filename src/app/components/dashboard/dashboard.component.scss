@@ -1,8 +1,13 @@
+.body {
+    overflow: hidden;
+}
+
 .mat-toolbar {
     background-color: white;
     border-bottom: lightgray 1px solid;
     width: 100%;
     padding: 5px;
+    // position: absolute;
 }
 
 .search-bar {

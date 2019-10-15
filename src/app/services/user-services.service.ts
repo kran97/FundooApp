@@ -67,7 +67,7 @@ export class UserServicesService {
         'Content-type':'application/x-www-form-urlencoded',
         'Authorization':localStorage.getItem('token')
       })
-    }  
+    }
     return this.http.get(this.link+options.purpose,httpOptions)
   }
 

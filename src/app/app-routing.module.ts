@@ -30,8 +30,9 @@ const routes: Routes = [
     path: 'resetpassword/:token', component: ResetComponent
   },
   {
-    path: '', component: DashboardComponent, canActivate:[AuthGuard], children:[
-      {path: 'notes', component: NotesComponent},
+    path: '', component: DashboardComponent, canActivate:[AuthGuard],
+     children:[
+      {path: '', component: NotesComponent},
       {path: 'reminder', component: ReminderComponent},
       {path: 'archive', component: ArchiveComponent},
       {path: 'trash', component: TrashComponent}

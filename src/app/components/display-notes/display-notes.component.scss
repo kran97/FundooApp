@@ -5,4 +5,16 @@
 .mat-card{
     border-radius: 20px;
     margin:2px;
+    word-break: break-word;
+}
+
+.card {
+    .icon{
+        opacity: 0;
+    }
+    &:hover{
+        .icon{
+            opacity: 1;
+        }
+    }
 }

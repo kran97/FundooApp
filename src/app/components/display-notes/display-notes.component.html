@@ -1,9 +1,9 @@
-<div fxLayout="row wrap" class="cardcontainer">
-    <mat-card *ngFor="let record of records" fxFlex="30" [ngStyle]="{'background-color': record.color}">
+<div fxLayout="row wrap" fxLayout.xs="column" class="cardcontainer">
+    <mat-card *ngFor="let record of records" class="card" fxFlex="30" fxFlex.xs="98" [ngStyle]="{'background-color': record.color}">
       <p>{{record.title}}</p>
       <p>{{record.description}}</p>
-      <div fxLayoutAlign="start start">
-        <app-icon-list (messageEvent)="deleteNote($event, record.id)" (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"></app-icon-list>
+      <div fxLayoutAlign="start start" fxLayout="row">
+        <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)" (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"></app-icon-list>
       </div>
     </mat-card>
 </div>
