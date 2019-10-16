@@ -1,13 +1,11 @@
-.body {
-    overflow: hidden;
-}
-
 .mat-toolbar {
     background-color: white;
     border-bottom: lightgray 1px solid;
     width: 100%;
     padding: 5px;
-    // position: absolute;
+    position: fixed;
+    z-index: 2;
+    margin-top: 0%;
 }
 
 .search-bar {
@@ -31,13 +29,13 @@
 }
 
 .example-container {
-    height: 100vh;
     background-color: white;
     border: none;
 }
 .example-sidenav {
-    width:21%;
+    width:18%;
     border: none;
+    padding-top: 5%;
 }
 
 .logo {

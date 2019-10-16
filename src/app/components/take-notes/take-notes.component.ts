@@ -56,8 +56,8 @@ export class TakeNotesComponent implements OnInit {
     this.show = !this.show;
     this.hide = !this.hide;
     this.color = "#ffffff";
-    this.title = null;
-    this.note = null;
+    // this.title = null;
+    // this.note = null;
   }
 
 

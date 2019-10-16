@@ -56,8 +56,6 @@ export class UserServicesService {
         'Authorization':localStorage.getItem('token')
       })
     }
-   
-    
     return this.http.post(this.link+options.purpose, this.getEncodedData(options.data), httpOptions);
   }
 

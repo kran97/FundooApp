@@ -1,4 +1,4 @@
-<div class="body" fxLayout="column" fxLayoutAlign="space-around stretch">
+
     <mat-toolbar class="mat-toolbar" fxLayoutAlign="start center" fxLayout="row">
         <button mat-button (click)="drawer.toggle()">
             <mat-icon>menu</mat-icon>
@@ -27,7 +27,7 @@
         </div>
     </mat-toolbar>
 
-    <mat-drawer-container class="example-container" autosize>
+    <mat-drawer-container class="example-container" >
         <mat-drawer #drawer class="example-sidenav" mode="side">
             <mat-list fxLayout="column">
                 <mat-list-item>
@@ -74,8 +74,9 @@
             </mat-list>
 
         </mat-drawer>
+       <mat-drawer-content>
         <div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="100">
             <router-outlet></router-outlet>
         </div>
+        </mat-drawer-content>
     </mat-drawer-container>
-</div>

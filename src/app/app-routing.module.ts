@@ -14,6 +14,7 @@ import { NotesComponent } from './components/notes/notes.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { EditDialogComponent } from "./components/edit-dialog/edit-dialog.component";
 
 const routes: Routes = [
   {
@@ -40,6 +41,9 @@ const routes: Routes = [
   },
   {
     path: 'dialog', component: DialogComponent
+  },
+  {
+    path: 'editDialog' , component: EditDialogComponent
   },
   {
     path: 'takeNotes', component: TakeNotesComponent
