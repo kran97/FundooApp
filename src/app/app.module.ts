@@ -39,6 +39,9 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { IconTrashComponent } from './components/icon-trash/icon-trash.component';
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
+import { DataServiceService } from "./services/data-service.service";
+import { SearchPipePipe } from './pipes/search-pipe.pipe';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,9 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
     ArchiveComponent,
     TrashComponent,
     IconTrashComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    SearchPipePipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +91,8 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
   ],
   providers: [
     UserServicesService,
-    NoteServiceService
+    NoteServiceService,
+    DataServiceService
   ],
   bootstrap: [AppComponent]
 })

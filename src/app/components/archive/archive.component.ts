@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServicesService } from "../../services/user-services.service";
 import { Note } from "../../models/note.model";
+import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-archive',
@@ -12,8 +14,9 @@ export class ArchiveComponent implements OnInit {
   records: any;
   note: Note;
   message: any;
+  dialogRef: any;
 
-  constructor(private noteService: UserServicesService) { }
+  constructor(private noteService: UserServicesService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.receiveNotes();
@@ -69,6 +72,22 @@ export class ArchiveComponent implements OnInit {
       }, (error) => {
         console.log(error);
       });
+  }
+
+  editDialog(title, description, color, id) {
+    this.dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '450px',
+      data: {
+        noteIdList: id,
+        title: title,
+        description: description,
+        color: color
+      },
+      panelClass: 'custom-modalbox'
+    });
+    this.dialogRef.afterClosed().subscribe(result => {
+      this.receiveNotes();
+    });
   }
 
 }

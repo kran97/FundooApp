@@ -1,10 +1,29 @@
-<h1 mat-dialog-title>Edit labels</h1>
-<div mat-dialog-content>
-  <mat-form-field>
-    <input matInput placeholder="Create new label" [(ngModel)]="data.label">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.label" cdkFocusInitial>Done</button>
-</div>
+<div>
+    <div fxLayout="row">
+        
+        <div> <mat-icon matPrefix matToolTip="Cancel">clear</mat-icon></div>
+          <div> <input matInput  [formControl]="labelValue" placeholder="create a new label" value={{noteObj.label}}></div>
+            <div fxLayoutAlign="end end"><button mat-button (click)="onCreateLabel()" matToolTip="Create Label">
+              <mat-icon matSuffix >
+            
+            done
+          
+          </mat-icon>
+        </button>
+      </div>
+       
+      </div>
+      <div *ngFor="let label of labels" fxLayout="row" fxLayoutAlign="space-evenly center" >
+        <div fxFlex=30 ><mat-icon class="del" matPrefix matToolTip="Delete label" (click)="onDelete(label)">delete</mat-icon></div>
+          
+        <div fxFlex=40> <p>{{label.label}}</p></div>
+          <div fxFlex=30 fxLayoutAlign="end end"><mat-icon matSuffix>create</mat-icon></div>
+      </div>
+       
+  
+      <mat-divider></mat-divider>
+    <div  fxLayout="row" fxLayoutAlign="end end" >
+      <button mat-button mat-button (click)="onDone()">Done</button>
+    </div>
+      
+  </div>

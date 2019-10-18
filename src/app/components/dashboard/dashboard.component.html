@@ -1,82 +1,93 @@
+<mat-toolbar class="mat-toolbar" fxLayoutAlign="start center" fxLayout="row">
+    <button mat-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
 
-    <mat-toolbar class="mat-toolbar" fxLayoutAlign="start center" fxLayout="row">
-        <button mat-button (click)="drawer.toggle()">
-            <mat-icon>menu</mat-icon>
+    <img fxFlex="4" (click)="gotoDashboard()" class="logo" src="../../assets/download.png" alt="FundooApp">
+
+    <mat-card class="search-bar" fxLayout="row" fxLayoutAlign="space-around center" fxHide.xs="true">
+        <button mat-icon-button>
+            <mat-icon matPrefix>search</mat-icon>
+        </button>
+        <input matInput type="search" id="site-search" name="search" [routerLink]="['/search']" placeholder="Search" [(ngModel)]="searchText" (keyup)="searchfor()" class="searchbar"
+            aria-label="search">
+    </mat-card>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-button (click)="gotoDashboard()">
+            <mat-icon>refresh</mat-icon>
         </button>
 
-        <img fxFlex="4" (click)="gotoDashboard()" class="logo" src="../../assets/download.png" alt="FundooApp">
+        <button mat-button (click)="gotoDashboard()">
+            <mat-icon>settings</mat-icon>
+        </button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <mat-icon (click)="exitApp()" class="exit-btn" matTooltip="Exit App">exit_to_app</mat-icon>
+    </div>
+</mat-toolbar>
 
-        <mat-card class="search-bar" fxLayout="row" fxLayoutAlign="space-around center">
-            <button mat-icon-button>
-                <mat-icon matPrefix>search</mat-icon>
-            </button>
-            <input matInput type="search" id="site-search" name="q" placeholder="Search" class="searchbar"
-                aria-label="search">
-        </mat-card>
-        <div fxLayout="row" fxLayoutAlign="end center">
-            <button mat-button (click)="gotoDashboard()">
-                <mat-icon>refresh</mat-icon>
-            </button>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #drawer class="example-sidenav" mode="side">
+        <mat-nav-list>
+        <mat-list fxLayout="column">
 
-            <button mat-button (click)="gotoDashboard()">
-                <mat-icon>settings</mat-icon>
-            </button>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="end end">
-            <mat-icon (click)="exitApp()" class="exit-btn" matTooltip="Exit App">exit_to_app</mat-icon>
-        </div>
-    </mat-toolbar>
+            <mat-list-item>
+                <div (click)="gotoNotes()" class="nav-btn" fxLayout="row" fxLayoutAlign="start center"
+                    fxLayoutGap="40px">
+                    <mat-icon matListIcon>note_add</mat-icon>
+                    <p>Notes</p>
+                </div>
+            </mat-list-item>
+            <mat-list-item>
+                <div (click)="gotoReminder()" fxLayout="row" class="nav-btn" fxLayoutAlign="start center"
+                    fxLayoutGap="40px">
+                    <mat-icon mat-list-icon>notifications_none</mat-icon>
+                    <p>Reminders</p>
+                </div>
+            </mat-list-item>
 
-    <mat-drawer-container class="example-container" >
-        <mat-drawer #drawer class="example-sidenav" mode="side">
-            <mat-list fxLayout="column">
-                <mat-list-item>
-                    <div (click)="gotoNotes()" class="nav-btn" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="40px">
-                        <mat-icon matListIcon>note_add</mat-icon>
-                        <p>Notes</p>
-                    </div>
-                </mat-list-item>
-                <mat-list-item>
-                    <div (click)="gotoReminder()" fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px">
-                        <mat-icon mat-list-icon>notifications_none</mat-icon>
-                        <p>Reminders</p>
-                    </div>
-                </mat-list-item>
+            <mat-divider></mat-divider>
 
-                <mat-divider></mat-divider>
+            <!--Labels-->
 
-                <h3 matSubheader>LABELS</h3>
-                <mat-list-item *ngIf="label">
-                    <mat-icon matListIcon>label</mat-icon>{{label}}
-                </mat-list-item>
-                <mat-list-item>
-                    <div fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px" (click)="openDialog()">
-                        <mat-icon matListIcon>edit</mat-icon>
-                        <p>Edit labels</p>
-                    </div>
-                </mat-list-item>
+            <h3 matSubheader>LABELS</h3>
+            <mat-list-item *ngFor="let label of labels">
+                <mat-icon matListIcon>label</mat-icon>{{label.label}}
+            </mat-list-item>
+            <mat-list-item>
+                <div fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px"
+                    (click)="openDialog()">
+                    <mat-icon matListIcon>edit</mat-icon>
+                    <p>Edit labels</p>
+                </div>
+            </mat-list-item>
 
-                <mat-divider></mat-divider>
+            <!--Labels End-->
 
-                <mat-list-item>
-                    <div (click)="gotoArchive()" fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px">
-                        <mat-icon matListIcon>archive</mat-icon>
-                        <p>Archive</p>
-                    </div>
-                </mat-list-item>
-                <mat-list-item>
-                        <div (click)="gotoTrash()" fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px">
-                            <mat-icon matListIcon>delete_outline</mat-icon>
-                            <p>Trash</p>
-                        </div>
-                </mat-list-item>
+            <mat-divider></mat-divider>
 
-            </mat-list>
+            <mat-list-item>
+                <div (click)="gotoArchive()" fxLayout="row" class="nav-btn" fxLayoutAlign="start center"
+                    fxLayoutGap="40px">
+                    <mat-icon matListIcon>archive</mat-icon>
+                    <p>Archive</p>
+                </div>
+            </mat-list-item>
+            <mat-list-item>
+                <div (click)="gotoTrash()" fxLayout="row" class="nav-btn" fxLayoutAlign="start center"
+                    fxLayoutGap="40px">
+                    <mat-icon matListIcon>delete_outline</mat-icon>
+                    <p>Trash</p>
+                </div>
+            </mat-list-item>
 
-        </mat-drawer>
-       <mat-drawer-content>
-        <div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="100">
+        </mat-list>
+    </mat-nav-list>
+
+    </mat-sidenav>
+    <mat-sidenav-content class="nav-content">
+        <!-- <div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="100"> -->
             <router-outlet></router-outlet>
-        </div>
-        </mat-drawer-content>
-    </mat-drawer-container>
+        <!-- </div> -->
+    </mat-sidenav-content>
+</mat-sidenav-container>

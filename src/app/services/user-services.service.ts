@@ -11,6 +11,10 @@ export class UserServicesService {
   response: any;
   error: any;
 
+  private messageSource = new BehaviorSubject('');
+  currentMessage = this.messageSource.asObservable();
+  message : string;
+
   constructor(private http: HttpClient) { }
 
   print(msg)
@@ -18,10 +22,7 @@ export class UserServicesService {
     console.log(msg);
   }
 
-  private messageSource = new BehaviorSubject('');
-  currentMessage = this.messageSource.asObservable();
-  message : string;
-
+  
   link : string = environment.baseUrl;
 
   registerService(url:string, userObj){
@@ -66,7 +67,7 @@ export class UserServicesService {
         'Authorization':localStorage.getItem('token')
       })
     }
-    return this.http.get(this.link+options.purpose,httpOptions)
+    return this.http.get(this.link+options.purpose, httpOptions)
   }
 
   getEncodedData(data){
@@ -91,6 +92,46 @@ export class UserServicesService {
       })
     }
     return this.http.post(this.link+options.purpose, options.data, httpOptions);
+  }
+
+  getLabelService(options){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':localStorage.getItem('token')
+      })
+    }
+    return this.http.get(this.link+options.purpose, httpOptions)
+  }
+
+  postWithTokenNotEncoded(options) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    };
+    return this.http.post(this.link+options.purpose, options.data, httpOptions);
+  }
+
+  deleteWithToken(options) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/x-www-form-urlencoded',
+        'Authorization': localStorage.getItem('token')
+      })
+    };
+    return this.http.delete(this.link+options.purpose, httpOptions);
+  }
+
+  getWithToken(options) {
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/x-www-form-urlencoded',
+        'Authorization':localStorage.getItem('token')
+      })
+    }
+    return this.http.get(this.link+options.purpose, httpOptions)
   }
 
 }

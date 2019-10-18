@@ -1,8 +1,8 @@
-<div class="master-div" fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="100">
+<div class="master-div" fxLayout="column" fxLayoutAlign="space-evenly stretch" fxFlex="100">
   <div fxLayoutAlign="space-around center">
     <button mat-button class="empty-btn" (click)="deleteAll()">Empty Trash</button>
   </div>
-  <div fxLayout="row wrap" class="cardcontainer" fxFlex="100" fxLayoutGap="8px" fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxFlex.xs="100">
+  <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" class="cardcontainer" fxFlex="100" fxLayoutGap="40px" fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxFlex.xs="100">
     <mat-card class="trash-card" *ngFor="let record of records" [ngStyle]="{'background-color': record.color}" fxFlex="25" fxLayout.xs="column wrap">
       <p fxLayout.xs="row wrap">{{record.title}}</p>
       <p fxLayout.xs="row wrap">{{record.description}}</p>

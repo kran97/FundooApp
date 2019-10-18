@@ -1,7 +1,8 @@
-// .cardcontainer{
-    // margin-left:40px;
-    // margin-top: 80px;
-// }
+.custom-modalbox {
+    mat-dialog-container {
+        padding: 0;
+    }
+}
 mat-card{
     border-radius: 20px;
     margin:2px;
@@ -18,4 +19,8 @@ mat-card{
             opacity: 1;
         }
     }
+}
+
+.cardcontainer {
+    margin: auto;
 }

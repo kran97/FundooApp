@@ -12,6 +12,7 @@ export class TrashComponent implements OnInit {
   records: any;
   note: Note;
   message: any;
+  delRecords: any;
 
   constructor(private noteService: UserServicesService) { }
 
@@ -61,10 +62,10 @@ export class TrashComponent implements OnInit {
       purpose: 'notes/getTrashNotesList'
     }
     return this.noteService.getNoteServices(options).subscribe((response: any) => {
-      this.records = response.data.data.reverse().filter(function (Deleted) {
+      this.delRecords = response.data.data.reverse().filter(function (Deleted) {
         return Deleted.isDeleted == true;
       });
-      console.log("idsss ", this.records[0].id);
+      console.log("idsss ", this.delRecords[0].id);
       console.log(response);
     }, (error) => {
       console.log(error);

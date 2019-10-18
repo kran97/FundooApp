@@ -1,0 +1,11 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly " fxLayout.xs="column" class="cardcontainer">
+    <mat-card *ngFor="let record of records | searchPipe:searchText" class="card" fxFlex="25" fxFlex.xs="98" [ngStyle]="{'background-color': record.color}">
+      <div (click)="editDialog(record.title, record.description, record.color, record.id)">
+        <p>{{record.title}}</p>
+        <p>{{record.description}}</p>
+    </div>
+      <div fxLayoutAlign="start start" fxLayout="row">
+        <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)" (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"></app-icon-list>
+      </div>
+    </mat-card>
+</div>
