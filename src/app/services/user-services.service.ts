@@ -13,95 +13,94 @@ export class UserServicesService {
 
   private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
-  message : string;
+  message: string;
 
   constructor(private http: HttpClient) { }
 
-  print(msg)
-  {
+  print(msg) {
     console.log(msg);
   }
 
-  
-  link : string = environment.baseUrl;
 
-  registerService(url:string, userObj){
-   return this.http.post(this.link+url, userObj);
+  link: string = environment.baseUrl;
+
+  changeMessage(message) {
+    this.messageSource.next(message);
   }
 
-  loginService(url:string, userObj) {
-    return this.http.post(this.link+url, userObj);
+  registerService(url: string, userObj) {
+    return this.http.post(this.link + url, userObj);
   }
 
-  forgotService(url:string, userObj) {
-    return this.http.post(this.link+url, userObj);
+  loginService(url: string, userObj) {
+    return this.http.post(this.link + url, userObj);
+  }
+
+  forgotService(url: string, userObj) {
+    return this.http.post(this.link + url, userObj);
   }
 
   resetService(options) {
     console.log("Inside Reset Service...")
-    console.log("options++++++" , options)
+    console.log("options++++++", options)
     let httpOptions = {
-      headers : new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
+      headers: new HttpHeaders({
+        'Content-type': 'application/x-www-form-urlencoded',
         'Authorization': localStorage.getItem('token')
       })
     }
-    console.log("encoded data",this.getEncodedData(options.data) );
-    return this.http.post(this.link+options.purpose, this.getEncodedData(options.data), httpOptions);
+    console.log("encoded data", this.getEncodedData(options.data));
+    return this.http.post(this.link + options.purpose, this.getEncodedData(options.data), httpOptions);
   }
 
   noteServices(options) {
-    let httpOptions={
-      headers : new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
-        'Authorization':localStorage.getItem('token')
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/x-www-form-urlencoded',
+        'Authorization': localStorage.getItem('token')
       })
     }
-    return this.http.post(this.link+options.purpose, this.getEncodedData(options.data), httpOptions);
+    return this.http.post(this.link + options.purpose, this.getEncodedData(options.data), httpOptions);
   }
 
-  getNoteServices(options){
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
-        'Authorization':localStorage.getItem('token')
+  getNoteServices(options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/x-www-form-urlencoded',
+        'Authorization': localStorage.getItem('token')
       })
     }
-    return this.http.get(this.link+options.purpose, httpOptions)
+    return this.http.get(this.link + options.purpose, httpOptions)
   }
 
-  getEncodedData(data){
-    const formBody=[];
-    for(const property in data){
-      const encodedKey=encodeURIComponent(property);
-      const encodedValue=encodeURIComponent(data[property]);
-      formBody.push(encodedKey+'='+encodedValue);
+  getEncodedData(data) {
+    const formBody = [];
+    for (const property in data) {
+      const encodedKey = encodeURIComponent(property);
+      const encodedValue = encodeURIComponent(data[property]);
+      formBody.push(encodedKey + '=' + encodedValue);
     }
-    return formBody.join ('&');
-  }
-
-  changeMessage(message){
-    this.messageSource.next(message);
+    return formBody.join('&');
   }
 
   noteTrashService(options) {
-    let httpOptions={
-      headers : new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':localStorage.getItem('token')
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
       })
     }
-    return this.http.post(this.link+options.purpose, options.data, httpOptions);
+    return this.http.post(this.link + options.purpose, options.data, httpOptions);
   }
 
-  getLabelService(options){
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':localStorage.getItem('token')
+  getLabelService(options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
       })
     }
-    return this.http.get(this.link+options.purpose, httpOptions)
+    return this.http.get(this.link + options.purpose, httpOptions)
   }
 
   postWithTokenNotEncoded(options) {
@@ -111,7 +110,7 @@ export class UserServicesService {
         'Authorization': localStorage.getItem('token')
       })
     };
-    return this.http.post(this.link+options.purpose, options.data, httpOptions);
+    return this.http.post(this.link + options.purpose, options.data, httpOptions);
   }
 
   deleteWithToken(options) {
@@ -121,17 +120,26 @@ export class UserServicesService {
         'Authorization': localStorage.getItem('token')
       })
     };
-    return this.http.delete(this.link+options.purpose, httpOptions);
+    return this.http.delete(this.link + options.purpose, httpOptions);
   }
 
   getWithToken(options) {
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
-        'Authorization':localStorage.getItem('token')
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/x-www-form-urlencoded',
+        'Authorization': localStorage.getItem('token')
       })
     }
-    return this.http.get(this.link+options.purpose, httpOptions)
+    return this.http.get(this.link + options.purpose, httpOptions)
+  }
+
+  imageUserService(options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.post(this.link + options.purpose, options.data, httpOptions);
   }
 
 }

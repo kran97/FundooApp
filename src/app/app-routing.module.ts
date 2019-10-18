@@ -16,6 +16,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { EditDialogComponent } from "./components/edit-dialog/edit-dialog.component";
 import { SearchComponent } from "./components/search/search.component";
+import { ImageDialogComponent } from "./components/image-dialog/image-dialog.component";
 
 const routes: Routes = [
   {
@@ -38,7 +39,8 @@ const routes: Routes = [
       {path: 'reminder', component: ReminderComponent},
       {path: 'archive', component: ArchiveComponent},
       {path: 'trash', component: TrashComponent},
-      {path: 'search', component: SearchComponent}
+      {path: 'search', component: SearchComponent},
+      {path: 'image-card', component: ImageDialogComponent}
     ]
   },
   {

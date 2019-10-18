@@ -42,6 +42,8 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
 import { DataServiceService } from "./services/data-service.service";
 import { SearchPipePipe } from './pipes/search-pipe.pipe';
 import { SearchComponent } from './components/search/search.component';
+import { ImageDialogComponent } from './components/image-dialog/image-dialog.component';
+import { ImageCropperModule } from "ngx-image-cropper";
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { SearchComponent } from './components/search/search.component';
     IconTrashComponent,
     EditDialogComponent,
     SearchPipePipe,
-    SearchComponent
+    SearchComponent,
+    ImageDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ import { SearchComponent } from './components/search/search.component';
     MatExpansionModule,
     TextFieldModule,
     MatGridListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ImageCropperModule
   ],
   providers: [
     UserServicesService,

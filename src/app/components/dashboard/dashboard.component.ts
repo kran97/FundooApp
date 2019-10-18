@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from "../dialog/dialog.component";
 import { UserServicesService } from "../../services/user-services.service";
+import { ImageDialogComponent } from "../image-dialog/image-dialog.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,19 +15,27 @@ export class DashboardComponent implements OnInit {
   labels: string;
   value: any;
   searchText: string;
+  email = localStorage.getItem('email');   
+  firstName = localStorage.getItem('firstName');
+  lastName = localStorage.getItem('lastName');
+  backUrl: any;
+  url: any;
 
   constructor(private router: Router, public dialog: MatDialog, private noteLabelService: UserServicesService) { }
 
   ngOnInit() {
     this.getLabels();
-    this.router.navigate(['notes']);
+    this.router.navigate(['']);
+    this.noteLabelService.currentMessage.subscribe((res)=>{
+      this.changeimage();
+    })
   }
 
   gotoDashboard() {
     this.router.navigate([''])
   }
   gotoNotes() {
-    this.router.navigate(['notes'])
+    this.router.navigate([''])
   }
   gotoReminder() {
     this.router.navigate(['reminder'])
@@ -73,6 +82,19 @@ export class DashboardComponent implements OnInit {
     }
     else
       this.noteLabelService.changeMessage(this.searchText);
+  }
+
+  openImageDialog() {
+    const imgDialogRef = this.dialog.open(ImageDialogComponent, {width: '500px',height: '550px'});
+
+    imgDialogRef.afterClosed().subscribe((res)=>{
+      console.log('Image saved', res);
+    })
+  }
+
+  changeimage(){
+    this.backUrl = localStorage.getItem('imageUrl');  
+    this.url = 'http://fundoonotes.incubation.bridgelabz.com/' + this.backUrl;
   }
 
 }
