@@ -1,9 +1,9 @@
 <!-- <div class="grandmaster-div"> -->
   <div class="master-div" fxLayoutAlign="center" fxFlex='100'>
-    <div class="archive-divs" fxLayout="row wrap" fxLayoutAlign="start start" fxFlex='100' fxLayoutGap="14px" fxLayout.xs="column"
+    <div class="archive-divs" fxLayout="row wrap" fxLayoutAlign="center start" fxFlex='100' fxLayoutGap="14px" fxLayout.xs="column"
       fxLayoutAlign.xs="start stretch" fxFlex.xs="100">
       <mat-card *ngFor="let record of records" class="archive-cards" [ngStyle]="{'background-color': record.color}"
-        fxFlex="31" fxFlex.xs="90" fxLayout.xs="column wrap">
+        fxFlex.xs="90" fxLayout.xs="column wrap">
         <div (click)="editDialog(record.title, record.description, record.color, record.id)">
           <p>{{record.title}}</p>
           <p>{{record.description}}</p>
