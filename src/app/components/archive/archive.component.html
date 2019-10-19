@@ -1,13 +1,19 @@
-<!-- <div class="master-div" fxLayout="column"  fxFlex="100"> -->
-    <div class="archive-divs" fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="100" fxLayoutGap="8px" fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxFlex.xs="100">
-      <mat-card class="archive-cards" *ngFor="let record of records" [ngStyle]="{'background-color': record.color}" fxFlex="25" fxLayout.xs="column wrap">
+<!-- <div class="grandmaster-div"> -->
+  <div class="master-div" fxLayoutAlign="center" fxFlex='100'>
+    <div class="archive-divs" fxLayout="row wrap" fxLayoutAlign="start start" fxFlex='100' fxLayoutGap="14px" fxLayout.xs="column"
+      fxLayoutAlign.xs="start stretch" fxFlex.xs="100">
+      <mat-card *ngFor="let record of records" class="archive-cards" [ngStyle]="{'background-color': record.color}"
+        fxFlex="31" fxFlex.xs="90" fxLayout.xs="column wrap">
         <div (click)="editDialog(record.title, record.description, record.color, record.id)">
           <p>{{record.title}}</p>
           <p>{{record.description}}</p>
-      </div>
+        </div>
         <div fxLayoutAlign="start start">
-          <app-icon-list (messageEvent)="deleteNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"></app-icon-list>
+          <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)" (messageEvent)="changeColor($event, record.id)">
+          </app-icon-list>
         </div>
       </mat-card>
     </div>
-  <!-- </div> -->
+  </div>
+<!-- </div> -->
+<!-- <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="14px" fxLayout.xs="column" class="cardcontainer"> -->

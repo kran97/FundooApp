@@ -1,8 +1,16 @@
+// .grandmaster-div {
+//     margin-top: 40%;
+//     overflow: scroll;
+// }
+
 .master-div {
-    // height: 100vh;
     margin-top: 7%;
     width: 100%;
-    margin-left: auto;
+    // position: fixed;
+}
+
+.cardcontainer {
+
 }
 
 .empty-btn {
@@ -13,6 +21,7 @@
 }
 
 .trash-card {
-    margin-top: 4%;
+    margin-bottom: 1%;
     word-break: break-word;
+    border-radius: 20px;
 }

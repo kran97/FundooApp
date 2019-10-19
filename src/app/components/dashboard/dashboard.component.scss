@@ -84,8 +84,11 @@
 
 .change-img {
     cursor: pointer;
-    width: 100px;
-    margin-left: 4px;
+    width: 87px;
+    height: 33px;
+    margin-left: 10px;
+    border-radius:0% 0% 200px 200px;
+    font-size: 11px;
 }
 
 .email {
@@ -107,7 +110,7 @@
 .img-btn-container .change-img {
     position: absolute;
     top: 12%;
-    background: rgba(0, 0, 0, 0.76);
+    background: rgba(0, 0, 0, 0.80);
     color: white;
 }
 

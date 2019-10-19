@@ -1,3 +1,14 @@
 .container {
     height: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    overflow: scroll;
+    width: 100%;
+    padding-left: 4%;
+    padding-right: 10%;
+    padding-top: 4%;
 }
+
+// .display-container {
+
+// }
