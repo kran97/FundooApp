@@ -1,8 +1,8 @@
-<div fxLayout="row" fxFlex="100" fxFlex.xs="25" fxLayoutAlign="start center">
-    <button fxFlex.xs="13" fxFlex.xs="13" mat-button  matTooltip="Add image">
+<div class="icon-div" fxLayout="row" fxFlex="100" fxLayoutGap="20" fxLayoutAlign="space-around center">
+    <button fxFlex.sm="13" fxFlex.xs="13" mat-icon-button  matTooltip="Add image">
       <mat-icon>image</mat-icon>
     </button>
-    <button fxFlex="13" fxFlex.xs="13" mat-button matTooltip="Remind me">
+    <button fxFlex="13" fxFlex.xs="13" mat-icon-button matTooltip="Remind me">
       <mat-icon>add_alert</mat-icon>
     </button>
     
@@ -27,15 +27,22 @@
         <mat-icon matTooltip="archive" *ngIf=!card.isArchived class="material-icons">archive</mat-icon>
       </button></div> -->
 
-    <div fxFlex.xs='13'><button mat-button matTooltip="Archive" (click)="archiveNote()">
+    <div fxFlex.xs='13'><button mat-icon-button matTooltip="Archive" (click)="archiveNote()">
       <mat-icon>archive</mat-icon>
     </button></div>
-    <div fxFlex.xs='13'><button mat-button matTooltip="More" [matMenuTriggerFor]="menu">
+    <div fxFlex.xs='13'><button mat-icon-button matTooltip="More" [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button></div>
     <mat-menu #menu>
       <button mat-menu-item (click)="deleteNote()">Delete Note</button>
-      <button mat-menu-item>Change Labels</button>
+      <button mat-menu-item [matMenuTriggerFor]="selectLabel">Labels</button>
       <button mat-menu-item>Show checkboxes</button>
     </mat-menu>
+
+    <mat-menu #selectLabel>
+      <div class="check-div" fxLaout="column" fxLayoutGap="10px" *ngFor='let label of labels'>
+        <button mat-icon-button (click)="labelNote(label.id)"><mat-checkbox>{{label.label}}</mat-checkbox></button>
+      </div>
+    </mat-menu>
+
   </div>

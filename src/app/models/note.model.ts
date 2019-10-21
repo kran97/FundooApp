@@ -3,4 +3,5 @@ export class Note {
     description: string;
     color: string;
     label?: string;
+    isPined?: boolean;
 }

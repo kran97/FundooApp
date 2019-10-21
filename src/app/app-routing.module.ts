@@ -17,6 +17,7 @@ import { TrashComponent } from './components/trash/trash.component';
 import { EditDialogComponent } from "./components/edit-dialog/edit-dialog.component";
 import { SearchComponent } from "./components/search/search.component";
 import { ImageDialogComponent } from "./components/image-dialog/image-dialog.component";
+import { LabelsComponent } from './components/labels/labels.component';
 
 const routes: Routes = [
   {
@@ -40,7 +41,8 @@ const routes: Routes = [
       {path: 'archive', component: ArchiveComponent},
       {path: 'trash', component: TrashComponent},
       {path: 'search', component: SearchComponent},
-      {path: 'image-card', component: ImageDialogComponent}
+      {path: 'image-card', component: ImageDialogComponent},
+      {path: 'label', component: LabelsComponent}
     ]
   },
   {

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -44,6 +44,8 @@ import { SearchPipePipe } from './pipes/search-pipe.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { ImageDialogComponent } from './components/image-dialog/image-dialog.component';
 import { ImageCropperModule } from "ngx-image-cropper";
+import { LabelsComponent } from './components/labels/labels.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,8 @@ import { ImageCropperModule } from "ngx-image-cropper";
     EditDialogComponent,
     SearchPipePipe,
     SearchComponent,
-    ImageDialogComponent
+    ImageDialogComponent,
+    LabelsComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,9 @@ import { ImageCropperModule } from "ngx-image-cropper";
     TextFieldModule,
     MatGridListModule,
     MatTooltipModule,
-    ImageCropperModule
+    ImageCropperModule,
+    MatCheckboxModule,
+    MatChipsModule
   ],
   providers: [
     UserServicesService,

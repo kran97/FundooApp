@@ -12,7 +12,7 @@ export class TakeNotesComponent implements OnInit {
 
   show: boolean = false;
   hide: boolean = true;
-  isActive: any = true;
+  isActive: boolean = true;
   
   title = new FormControl('');
   note = new FormControl('');

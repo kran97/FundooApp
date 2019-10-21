@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { UserServicesService } from "../../services/user-services.service";
 
 export interface Tile {
   color: string;
@@ -30,13 +31,19 @@ export class IconListComponent implements OnInit {
       { 'color': '#0288D1', 'name': 'darkblue' }
     ]]
 
+    labels: any;
+    label: any;
+    labelId: any;
+
   messageDelete: string = "Deleting note..."
   messageArchive: string = "Archive..."
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() labelEvent = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private noteLabelService: UserServicesService) { }
 
   ngOnInit() {
+    this.getLabels();
   }
 
   changeColor(color :any) {
@@ -49,6 +56,25 @@ export class IconListComponent implements OnInit {
 
   archiveNote() {
     this.messageEvent.emit(this.messageArchive);
+  }
+
+  labelNote(label:any) {
+    this.label = label;
+    this.labelEvent.emit(this.label);
+    console.log("LabelID.. ", label)
+  }
+
+  getLabels() {
+
+    const options = {
+      purpose: 'noteLabels/getNoteLabelList',
+    };
+    this.noteLabelService.getWithToken(options).subscribe((response: any) => {
+      this.labels = response.data.details;
+      this.labelId = response.data.details;
+    }, (error) => {
+      console.log(error.statusText);
+    });
   }
 
 }

@@ -1,13 +1,23 @@
 <div fxLayoutAlign="space-around center">
   <div fxFlex='80'>
-    <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="14px" fxLayout.xs="column" class="cardcontainer">
-      <mat-card *ngFor="let record of records" class="card" fxFlex="31" fxFlex.xs="98" [ngStyle]="{'background-color': record.color}">
+    <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutAlign.sm="center stretch" fxLayoutGap="14px"
+      fxLayout.xs="column" fxLayout.sm="column" class="cardcontainer">
+      <mat-card *ngFor="let record of records" class="card" fxFlex="31" fxFlex.xs="98" fxFlex.sm="50"
+        [ngStyle]="{'background-color': record.color}">
         <div (click)="editDialog(record.title, record.description, record.color, record.id)">
           <p>{{record.title}}</p>
           <p>{{record.description}}</p>
-      </div>
-        <div fxLayout="row" fxLayoutAlign="start start">
-          <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)" (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"></app-icon-list>
+        </div>
+        <mat-chip-list>
+          <div *ngFor="let label of record.noteLabels" fxLayout="row">
+            <mat-chip class="label-chip">{{label.label}}<mat-icon class="label-cross" (click)="removeLabel(label.id,record.id)">cancel</mat-icon>
+            </mat-chip>
+          </div>
+        </mat-chip-list>
+        <div>
+          <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)"
+            (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"
+            (labelEvent)="saveLabel($event, record.id)"></app-icon-list>
         </div>
       </mat-card>
     </div>

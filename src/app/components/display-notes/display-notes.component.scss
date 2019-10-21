@@ -22,6 +22,17 @@ mat-card{
     margin-bottom: 14px;
 }
 
+.label-chip {
+    .label-cross {
+        opacity: 0;
+    }
+    &:hover{
+        .label-cross{
+            opacity: 1;
+        }
+    }
+}
+
 .cardcontainer {
     margin: auto;
 }

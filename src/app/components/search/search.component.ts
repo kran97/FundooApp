@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServicesService } from "../../services/user-services.service";
-import { Note } from "../../models/note.model";
 import { MatDialog } from '@angular/material';
 import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
 import { SearchPipePipe } from "../../pipes/search-pipe.pipe";
