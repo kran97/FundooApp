@@ -31,6 +31,10 @@ mat-card{
             opacity: 1;
         }
     }
+    opacity: 0.75;
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .cardcontainer {
