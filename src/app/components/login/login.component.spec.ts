@@ -32,4 +32,21 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('email should be valid',()=> {
+    component.email.setValue('as@asd.com');
+    expect(component.email.valid).toBeTruthy()
+  });
+  it('email should be invalid', () => {
+    component.email.setValue('');
+    expect(component.email.valid).toBeFalsy();
+  });
+  it('password should be valid', () => {
+    component.password.setValue('dcvdfafq');
+    expect(component.password.valid).toBeTruthy();
+  });
+  it('password should be invalid', () => {
+    component.password.setValue('');
+    expect(component.password.valid).toBeFalsy();
+  });
+  
 });

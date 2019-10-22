@@ -24,7 +24,6 @@ export class ImageDialogComponent implements OnInit {
 
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.file;
-    console.log("Cropped Image... ",this.croppedImage);  
   }
 
   uploadImage(){

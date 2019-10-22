@@ -8,8 +8,16 @@
           <p>{{record.title}}</p>
           <p>{{record.description}}</p>
         </div>
+
+        <mat-chip-list>
+          <div *ngFor="let label of record.noteLabels" fxLayout="row">
+            <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{label.label}}<mat-icon class="label-cross" (click)="removeLabel(label.id,record.id)">cancel</mat-icon>
+            </mat-chip>
+          </div>
+        </mat-chip-list>
+
         <div fxLayoutAlign="start start">
-          <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)" (messageEvent)="changeColor($event, record.id)">
+          <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)" (messageEvent)="changeColor($event, record.id)" (labelEvent)="saveLabel($event, record.id)">
           </app-icon-list>
         </div>
       </mat-card>

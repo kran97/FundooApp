@@ -49,10 +49,10 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  receiveUpdate($event) {
-    this.updateMsg = $event;
-    this.searchNotes();
-  }
+  // receiveUpdate($event) {
+  //   this.updateMsg = $event;
+  //   this.searchNotes();
+  // }
 
   deleteNote($event, id: any) {
     if ($event == "Deleting note...") {

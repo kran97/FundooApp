@@ -10,7 +10,7 @@
         </div>
         <mat-chip-list>
           <div *ngFor="let label of record.noteLabels" fxLayout="row">
-            <mat-chip class="label-chip">{{label.label}}<mat-icon class="label-cross" (click)="removeLabel(label.id,record.id)">cancel</mat-icon>
+            <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{label.label}}<mat-icon class="label-cross" (click)="removeLabel(label.id,record.id)">cancel</mat-icon>
             </mat-chip>
           </div>
         </mat-chip-list>

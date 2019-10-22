@@ -77,7 +77,9 @@
 
                 <h3 matSubheader>LABELS</h3>
                 <mat-list-item *ngFor="let label of labels">
-                    <mat-icon matListIcon>label</mat-icon>{{label.label}}
+                    <div (click)="gotoLabel(label.id)">
+                        <mat-icon matListIcon>label</mat-icon>{{label.label}}
+                    </div>
                 </mat-list-item>
                 <mat-list-item>
                     <div fxLayout="row" class="nav-btn" fxLayoutAlign="start center" fxLayoutGap="40px"

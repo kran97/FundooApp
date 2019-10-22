@@ -1,4 +1,4 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-evenly " fxLayout.xs="column" class="cardcontainer">
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly center" fxLayout.xs="column" class="cardcontainer">
     <mat-card *ngFor="let record of records | searchPipe:searchText" class="card" fxFlex="25" fxFlex.xs="98" [ngStyle]="{'background-color': record.color}">
       <div (click)="editDialog(record.title, record.description, record.color, record.id)">
         <p>{{record.title}}</p>

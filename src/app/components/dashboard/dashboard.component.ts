@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit {
 
   searchfor() {
     if (this.searchText == '') {
-      this.noteLabelService.changeMessage("nosearching");
+      this.noteLabelService.changeMessage("no searching");
     }
     else
       this.noteLabelService.changeMessage(this.searchText);
@@ -93,7 +93,7 @@ export class DashboardComponent implements OnInit {
   }
 
   changeimage(){
-    this.backUrl = localStorage.getItem('imageUrl');  
+    this.backUrl = localStorage.getItem('imageUrl');
     this.url = 'http://fundoonotes.incubation.bridgelabz.com/' + this.backUrl;
   }
 

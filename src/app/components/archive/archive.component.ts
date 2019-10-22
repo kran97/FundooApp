@@ -15,7 +15,8 @@ export class ArchiveComponent implements OnInit {
   note: Note;
   message: any;
   dialogRef: any;
-
+  label: any;
+  
   constructor(private noteService: UserServicesService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -87,6 +88,43 @@ export class ArchiveComponent implements OnInit {
     });
     this.dialogRef.afterClosed().subscribe(result => {
       this.receiveNotes();
+    });
+  }
+
+  saveLabel($event, id) {
+    this.label = $event;
+    let noteData = {
+      "noteId": id,
+      "labelId": this.label
+    };
+    console.log(noteData);
+    let options = {
+      data: noteData,
+      purpose: 'notes/' + id + '/addLabelToNotes/' + this.label + '/add'
+    };
+    this.noteService.noteTrashService(options).subscribe((Object) => {
+      console.log(Object);
+      this.receiveNotes();
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  removeLabel(labelId, noteId) {
+    let noteData = {
+      "noteId": noteId,
+      "labelId": labelId
+    };
+    console.log(noteData);
+    let options = {
+      data: noteData,
+      purpose: 'notes/' + noteId + '/addLabelToNotes/' + labelId + '/remove'
+    };
+    this.noteService.noteTrashService(options).subscribe((Object) => {
+      console.log(Object);
+      this.receiveNotes();
+    }, (error) => {
+      console.log(error);
     });
   }
 
