@@ -46,6 +46,11 @@ export class DashboardComponent implements OnInit {
   gotoTrash() {
     this.router.navigate(['trash'])
   }
+  gotoLabel(label) {
+    this.router.navigate(['label/'+label])
+    this.noteLabelService.changeMessage(label);
+  }
+
 
   exitApp() {
     localStorage.clear();

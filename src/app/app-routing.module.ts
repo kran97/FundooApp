@@ -42,7 +42,7 @@ const routes: Routes = [
       {path: 'trash', component: TrashComponent},
       {path: 'search', component: SearchComponent},
       {path: 'image-card', component: ImageDialogComponent},
-      {path: 'label', component: LabelsComponent}
+      {path: 'label/:labelname', component: LabelsComponent}
     ]
   },
   {

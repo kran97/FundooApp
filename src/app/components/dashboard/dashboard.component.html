@@ -4,13 +4,15 @@
         <mat-icon>menu</mat-icon>
     </button>
 
-    <img fxFlex="4" (click)="gotoDashboard()" class="logo" src="../../assets/download.png" alt="FundooApp">
+    <img (click)="gotoDashboard()" class="logo" src="../../assets/download.png" alt="FundooApp">
 
-    <mat-card class="search-bar" fxLayout="row" fxLayoutAlign="space-around center" fxHide.xs="true">
+    fundoo Notes
+
+    <mat-card class="search-bar" fxLayout="row" fxLayoutAlign="space-around center">
         <button mat-icon-button>
             <mat-icon matPrefix>search</mat-icon>
         </button>
-        <input matInput type="search" id="site-search" name="search" [routerLink]="['/search']" placeholder="Search"
+        <input fxHide.xs="true" matInput type="search" id="site-search" name="search" [routerLink]="['/search']" placeholder="Search"
             [(ngModel)]="searchText" (keyup)="searchfor()" class="searchbar" aria-label="search">
     </mat-card>
 
@@ -76,8 +78,8 @@
                 <!--Labels-->
 
                 <h3 matSubheader>LABELS</h3>
-                <mat-list-item *ngFor="let label of labels">
-                    <div (click)="gotoLabel(label.id)">
+                <mat-list-item *ngFor="let label of labels" (click)="gotoLabel(label.label)">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="40px">
                         <mat-icon matListIcon>label</mat-icon>{{label.label}}
                     </div>
                 </mat-list-item>

@@ -73,6 +73,16 @@ export class UserServicesService {
     return this.http.get(this.link + options.purpose, httpOptions)
   }
 
+  getNoteByLabel(options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.post(this.link + options.purpose, options.data, httpOptions)
+  }
+
   getEncodedData(data) {
     const formBody = [];
     for (const property in data) {

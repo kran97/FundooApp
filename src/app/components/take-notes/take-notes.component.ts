@@ -19,7 +19,7 @@ export class TakeNotesComponent implements OnInit {
   noteModel: Note = new Note();
   options: any;
   message : string;
-  color : any;
+  color : any = "#ffffff";
 
   constructor(private noteService: UserServicesService) { }
 
@@ -36,6 +36,12 @@ export class TakeNotesComponent implements OnInit {
   }
 
   close() {
+    if(this.title.value == '' && this.note.value == '') {
+      this.show = !this.show;
+      this.hide = !this.hide;
+      this.color = "#ffffff";
+      return;
+    }
     this.noteModel = {
       title: this.title.value,
       description: this.note.value,
@@ -50,14 +56,15 @@ export class TakeNotesComponent implements OnInit {
     this.noteService.noteServices(this.options).subscribe((Object) =>{
       console.log(Object);
       this.noteService.changeMessage('note saved');
+    
     }, (error) => {
       console.log(error);
     });
+    this.title.setValue('');
+    this.note.setValue('');
     this.show = !this.show;
     this.hide = !this.hide;
     this.color = "#ffffff";
-    // this.title = null;
-    // this.note = null;
   }
 
 

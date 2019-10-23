@@ -35,6 +35,11 @@ mat-card{
     &:hover {
         opacity: 1;
     }
+    filter: brightness(80%);
+}
+
+.label-cross {
+    transform: scale(0.7);
 }
 
 .cardcontainer {

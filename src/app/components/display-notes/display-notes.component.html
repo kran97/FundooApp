@@ -2,14 +2,14 @@
   <div fxFlex='80'>
     <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutAlign.sm="center stretch" fxLayoutGap="14px"
       fxLayout.xs="column" fxLayout.sm="column" class="cardcontainer">
-      <mat-card *ngFor="let record of records" class="card" fxFlex="31" fxFlex.xs="98" fxFlex.sm="50"
+      <mat-card *ngFor="let record of records" class="card" fxFlex="28" fxFlex.xs="98" fxFlex.sm="50"
         [ngStyle]="{'background-color': record.color}">
         <div (click)="editDialog(record.title, record.description, record.color, record.id)">
           <p>{{record.title}}</p>
           <p>{{record.description}}</p>
         </div>
         <mat-chip-list>
-          <div *ngFor="let label of record.noteLabels" fxLayout="row">
+          <div *ngFor="let label of record.noteLabels" fxLayout="row wrap" fxLayoutAlign="space-between center">
             <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{label.label}}<mat-icon class="label-cross" (click)="removeLabel(label.id,record.id)">cancel</mat-icon>
             </mat-chip>
           </div>
