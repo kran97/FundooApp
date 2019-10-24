@@ -1,0 +1,44 @@
+<mat-card>
+  <mat-card-title>
+    Collaborators
+  </mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="master-div" fxLayout="column" fxLayoutAlign="space-around start">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="40px" class="semi-master-div">
+        <mat-icon>account_circle</mat-icon>
+        <div>
+          <p class="owner-details">{{firstName}} {{lastName}} (Owner)</p>
+          <p>{{email}}</p>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-around center" class="disp-collab" *ngFor="let detail of collabDetails">
+        <mat-icon>account_circle</mat-icon>
+        <div fxLayout="column">
+          <p class="owner-details">{{detail.firstName}} {{detail.lastName}}</p>
+          <p>{{detail.email}}</p>
+        </div>
+        <mat-icon class="remove-btn" (click)="removeCollab(detail.userId)">close</mat-icon>
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="20px">
+        <mat-icon>person_add</mat-icon>
+        <input matInput class="searchCollab" [matMenuTriggerFor]="searchList" [(ngModel)]="searchWord"
+          placeholder="Email to share with" (keyup)="searchlist(searchWord)">
+        <div>
+          <mat-menu #searchList>
+            <div *ngFor="let record of searchResultList">
+              <div class="collabClick"
+                (click)="saveCollab(record.email, record.firstName, record.lastName, record.userId)">{{record.email}}
+              </div>
+            </div>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-button>Close</button>
+  </mat-card-footer>
+</mat-card>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserServicesService } from "../../services/user-services.service";
+import { MatDialog } from '@angular/material';
 
 export interface Tile {
   color: string;
@@ -34,13 +35,16 @@ export class IconListComponent implements OnInit {
     labels: any;
     label: any;
     labelId: any;
+    dialogRef: any;
 
   messageDelete: string = "Deleting note..."
   messageArchive: string = "Archive..."
+  messageCollab: string = "Collab..."
   @Output() messageEvent = new EventEmitter<string>();
   @Output() labelEvent = new EventEmitter<string>();
+  @Output() collabEvent = new EventEmitter<string>();
 
-  constructor(private noteLabelService: UserServicesService) { }
+  constructor(private noteLabelService: UserServicesService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getLabels();
@@ -75,6 +79,10 @@ export class IconListComponent implements OnInit {
     }, (error) => {
       console.log(error.statusText);
     });
+  }
+
+  openCollabDialog() {
+    this.collabEvent.emit(this.messageCollab);
   }
 
 }

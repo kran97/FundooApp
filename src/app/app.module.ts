@@ -46,6 +46,7 @@ import { ImageDialogComponent } from './components/image-dialog/image-dialog.com
 import { ImageCropperModule } from "ngx-image-cropper";
 import { LabelsComponent } from './components/labels/labels.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { MatChipsModule } from '@angular/material/chips';
     SearchPipePipe,
     SearchComponent,
     ImageDialogComponent,
-    LabelsComponent
+    LabelsComponent,
+    CollaboratorComponent
   ],
   imports: [
     BrowserModule,

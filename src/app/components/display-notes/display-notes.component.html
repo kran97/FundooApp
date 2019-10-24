@@ -17,7 +17,8 @@
         <div>
           <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)"
             (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"
-            (labelEvent)="saveLabel($event, record.id)"></app-icon-list>
+            (labelEvent)="saveLabel($event, record.id)" (collabEvent)="openCollabDialog($event, record.id)">
+          </app-icon-list>
         </div>
       </mat-card>
     </div>

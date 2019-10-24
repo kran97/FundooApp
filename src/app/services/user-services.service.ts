@@ -152,4 +152,34 @@ export class UserServicesService {
     return this.http.post(this.link + options.purpose, options.data, httpOptions);
   }
 
+  searchUserList(data, options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type' : 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.post(this.link+options, data, httpOptions);
+  }
+
+  getPatch(options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type' : 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.patch(this.link+options.purpose, options.data, httpOptions)
+  }
+
+  deleteWithTokenJson(options) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    };
+    return this.http.delete(this.link + options.purpose, httpOptions);
+  }
+
 }

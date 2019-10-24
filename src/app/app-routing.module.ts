@@ -18,6 +18,7 @@ import { EditDialogComponent } from "./components/edit-dialog/edit-dialog.compon
 import { SearchComponent } from "./components/search/search.component";
 import { ImageDialogComponent } from "./components/image-dialog/image-dialog.component";
 import { LabelsComponent } from './components/labels/labels.component';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,9 @@ const routes: Routes = [
   },
   {
     path: 'editDialog' , component: EditDialogComponent
+  },
+  {
+    path: 'collab' , component: CollaboratorComponent
   },
   {
     path: 'takeNotes', component: TakeNotesComponent

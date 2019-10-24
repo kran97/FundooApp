@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserServicesService } from "../../services/user-services.service";
 import { Note } from "../../models/note.model";
 import { MatDialog } from '@angular/material';
 import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
+import { CollaboratorComponent } from "../collaborator/collaborator.component";
 
 @Component({
   selector: 'app-display-notes',
@@ -90,7 +91,7 @@ export class DisplayNotesComponent implements OnInit {
   }
 
   changeColor($event, id: any) {
-    if ($event != "Archive..." && $event != "Deleting note...") {
+    if ($event != "Archive..." && $event != "Deleting note..." && $event != "Collab...") {
       this.color = $event;
       let noteData = {
         "noteIdList": [id],
@@ -161,6 +162,22 @@ export class DisplayNotesComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+
+  openCollabDialog($event, id: any) {
+    if ($event == "Collab...") {
+      this.dialogRef = this.dialog.open(CollaboratorComponent, {
+        width: '625px',
+        height: '325px',
+        data: {
+          noteIdList: id
+        },
+        panelClass: 'custom-modalbox'
+      });
+      this.dialogRef.afterClosed().subscribe(result => {
+        this.receiveNotes();
+      });
+    }
   }
 
 }
