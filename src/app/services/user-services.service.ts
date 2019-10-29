@@ -15,6 +15,10 @@ export class UserServicesService {
   currentMessage = this.messageSource.asObservable();
   message: string;
 
+  private booleanSource = new BehaviorSubject('');
+  boolMessage = this.booleanSource.asObservable();
+  bool: string;
+
   constructor(private http: HttpClient) { }
 
   print(msg) {
@@ -26,6 +30,10 @@ export class UserServicesService {
 
   changeMessage(message) {
     this.messageSource.next(message);
+  }
+
+  changeBool(bool) {
+    this.booleanSource.next(bool);
   }
 
   registerService(url: string, userObj) {
@@ -180,6 +188,26 @@ export class UserServicesService {
       })
     };
     return this.http.delete(this.link + options.purpose, httpOptions);
+  }
+
+  remindernoteservice(Obj){
+    let httpOptions = {    
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.post(this.link+Obj.purpose, Obj.data, httpOptions);
+  }
+
+  reminderdisplaynoteservice(options) {
+    let httpOptions = {    
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.get(this.link + options.purpose, httpOptions)
   }
 
 }

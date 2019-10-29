@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { UserServicesService } from "../../services/user-services.service";
 import { MatDialog } from '@angular/material';
 
@@ -36,6 +37,8 @@ export class IconListComponent implements OnInit {
     label: any;
     labelId: any;
     dialogRef: any;
+    show: any = true;
+    date = new FormControl(new Date());
 
   messageDelete: string = "Deleting note..."
   messageArchive: string = "Archive..."
@@ -43,7 +46,8 @@ export class IconListComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
   @Output() labelEvent = new EventEmitter<string>();
   @Output() collabEvent = new EventEmitter<string>();
-
+  @Output() remindEvent = new EventEmitter<string>();
+  
   constructor(private noteLabelService: UserServicesService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -83,6 +87,10 @@ export class IconListComponent implements OnInit {
 
   openCollabDialog() {
     this.collabEvent.emit(this.messageCollab);
+  }
+
+  save(picker3) {
+    this.remindEvent.emit(picker3);
   }
 
 }

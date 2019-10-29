@@ -2,11 +2,57 @@
     <button fxFlex.sm="13" fxFlex.xs="13" mat-icon-button  matTooltip="collaborator" (click)="openCollabDialog()">
       <mat-icon>person_add</mat-icon>
     </button>
-    <button fxFlex="13" fxFlex.xs="13" mat-icon-button matTooltip="Remind me">
+    <button [matMenuTriggerFor]="remindMenu" fxFlex="13" fxFlex.xs="13" mat-icon-button matTooltip="Remind me">
       <mat-icon>add_alert</mat-icon>
     </button>
+<!--reminder begins-->
+    <mat-menu #remindMenu [overlapTrigger]="false">
+        <div *ngIf="show" class="accountmatcard">
+        <h3>Reminder:</h3>
+        <button mat-menu-item>Later today</button>
+        <button mat-menu-item>Tomorrow</button>
+        <button mat-menu-item>Next week</button>
+        <button mat-menu-item>Home</button>
+      
+        <button mat-menu-item (click)="show=false; $event.stopPropagation();"><mat-icon>access_time</mat-icon>Pick date & time</button>
+        <button mat-menu-item><mat-icon>room</mat-icon>Pick place</button>
+      </div>
+      
+      <div *ngIf="!show">
+          <button mat-icon-button (click)="show=true; $event.stopPropagation();">
+            <mat-icon>keyboard_backspace</mat-icon></button>Pick date & time
+            <mat-divider></mat-divider>
+            <mat-form-field>
+                <input (click)="$event.stopPropagation();"  matInput [matDatepicker]="picker3" [value]="date.value">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
+      
+              <mat-form-field (click)="$event.stopPropagation();">
+                  <mat-select #fontSize value="Custom" >
+                    <mat-option value="Morning">Morning</mat-option>
+                    <mat-option value="Afternoon">Afternoon</mat-option>
+                    <mat-option value="Evening">Evening</mat-option>
+                    <mat-option value="Night">Night</mat-option>
+                    <mat-option value="Custom">Custom</mat-option>
+                  </mat-select>
+                </mat-form-field>
+      
+              <mat-form-field (click)="$event.stopPropagation();">
+                  <mat-select #fontSize value="Does not repeat" >
+                    <mat-option value="Does not repeat">Does not repeat</mat-option>
+                    <mat-option value="Daily">Daily</mat-option>
+                    <mat-option value="Weekly">Weekly</mat-option>
+                    <mat-option value="Monthly">Monthly</mat-option>
+                    <mat-option value="Yearly">Yearly</mat-option>
+                    <mat-option value="Custom">Custom</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-button (click)="save(picker3)">Save</button>
+      </div>
+      </mat-menu>
     
-
+<!--Reminder ends-->
 
     <div fxFlex="13" fxFlex.xs='13'><button mat-icon-button matTooltip="Select theme" [matMenuTriggerFor]="selectTheme">
         <mat-icon class="material-icons">color_lens</mat-icon>

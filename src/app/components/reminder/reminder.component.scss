@@ -1,0 +1,47 @@
+.custom-modalbox {
+    mat-dialog-container {
+        padding: 0;
+    }
+}
+mat-card{
+    border-radius: 20px;
+    margin:2px;
+    word-break: break-word;
+    // position: fixed;
+}
+
+.card {
+    .icon{
+        opacity: 0;
+    }
+    &:hover{
+        .icon{
+            opacity: 1;
+        }
+    }
+    margin-bottom: 14px;
+}
+
+.label-chip {
+    .label-cross {
+        opacity: 0;
+    }
+    &:hover{
+        .label-cross{
+            opacity: 1;
+        }
+    }
+    opacity: 0.75;
+    &:hover {
+        opacity: 1;
+    }
+    filter: brightness(80%);
+}
+
+.label-cross {
+    transform: scale(0.7);
+}
+
+.cardcontainer {
+    margin: auto;
+}

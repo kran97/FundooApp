@@ -47,7 +47,9 @@ import { ImageCropperModule } from "ngx-image-cropper";
 import { LabelsComponent } from './components/labels/labels.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from "@angular/material";
+import { MatSelectModule } from "@angular/material";
 @NgModule({
   declarations: [
 
@@ -98,12 +100,16 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     MatTooltipModule,
     ImageCropperModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatNativeDateModule
   ],
   providers: [
     UserServicesService,
     NoteServiceService,
-    DataServiceService
+    DataServiceService,
+    MatDatepickerModule
   ],
   bootstrap: [AppComponent]
 })

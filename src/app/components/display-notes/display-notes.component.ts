@@ -21,6 +21,7 @@ export class DisplayNotesComponent implements OnInit {
   dialogRef: any;
   color: any;
   label: any;
+  listView: any = false;
 
   constructor(private noteService: UserServicesService, public dialog: MatDialog) { }
 
@@ -28,6 +29,11 @@ export class DisplayNotesComponent implements OnInit {
     this.receiveNotes();
     this.noteService.currentMessage.subscribe((res) => {
       this.receiveNotes();
+    });
+    this.noteService.boolMessage.subscribe((res: any)=>{
+      this.listView = res;
+      this.receiveNotes();
+      console.log(this.listView);
     });
   }
 
@@ -178,6 +184,25 @@ export class DisplayNotesComponent implements OnInit {
         this.receiveNotes();
       });
     }
+  }
+
+  save($event, id){
+    //console.log("date........",picker3._validSelected);
+    let remind = {
+      reminder: $event._validSelected,
+      noteIdList: [id],
+    }
+    let options = {
+      data: remind,
+      purpose: "notes/addUpdateReminderNotes"
+    }
+    //console.log("asdasdasd...",archive);
+    
+    this.noteService.remindernoteservice(options).subscribe((response:any) => {
+      console.log("succcessss.....",response);
+      
+      this.noteService.changeMessage("Hello from Sibling")
+    });
   }
 
 }

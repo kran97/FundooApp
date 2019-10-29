@@ -1,3 +1,59 @@
-<p>
-  reminder works!
-</p>
+<div fxLayoutAlign="space-around center">
+    <div fxFlex='80'>
+      <div fxLayoutAlign="start start" fxLayoutAlign.sm="center stretch" 
+        fxLayout.xs="column" fxLayout.sm="column" class="cardcontainer">
+        <div *ngIf="listView==true" fxLayout="row wrap" fxLayoutGap="14px">
+        <mat-card *ngFor="let record of records" class="card" fxFlex="90"
+          [ngStyle]="{'background-color': record.color}">
+          <div (click)="editDialog(record.title, record.description, record.color, record.id)">
+            <p>{{record.title}}</p>
+            <p>{{record.description}}</p>
+          </div>
+          <mat-chip-list>
+            <div *ngFor="let label of record.noteLabels" fxLayout="row wrap" fxLayoutAlign="space-between center">
+              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{label.label}}<mat-icon class="label-cross" (click)="removeLabel(label.id,record.id)">cancel</mat-icon>
+              </mat-chip>
+            </div>
+          </mat-chip-list>
+          <mat-chip-list>
+            <div *ngFor="let collab of record.collaborators" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <mat-icon (click)="openCollabDialog('Collab...', record.id)" matTooltip="{{collab.firstName}}">account_circle</mat-icon>
+            </div>
+          </mat-chip-list>
+          <div>
+            <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)"
+              (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"
+              (labelEvent)="saveLabel($event, record.id)" (collabEvent)="openCollabDialog($event, record.id)">
+            </app-icon-list>
+          </div>
+        </mat-card>
+      </div>
+      <div *ngIf="listView==false" fxLayout="row wrap" fxLayoutGap="14px">
+        <mat-card *ngFor="let record of records" class="card" fxFlex="28" fxFlex.xs="98" fxFlex.sm="90"
+          [ngStyle]="{'background-color': record.color}">
+          <div (click)="editDialog(record.title, record.description, record.color, record.id)">
+            <p>{{record.title}}</p>
+            <p>{{record.description}}</p>
+          </div>
+          <mat-chip-list>
+            <div *ngFor="let label of record.noteLabels" fxLayout="row wrap" fxLayoutAlign="space-between center">
+              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{label.label}}<mat-icon class="label-cross" (click)="removeLabel(label.id,record.id)">cancel</mat-icon>
+              </mat-chip>
+            </div>
+          </mat-chip-list>
+          <mat-chip-list>
+            <div *ngFor="let collab of record.collaborators" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <mat-icon (click)="openCollabDialog('Collab...', record.id)" matTooltip="{{collab.firstName}}">account_circle</mat-icon>
+            </div>
+          </mat-chip-list>
+          <div>
+            <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)"
+              (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"
+              (labelEvent)="saveLabel($event, record.id)" (collabEvent)="openCollabDialog($event, record.id)">
+            </app-icon-list>
+          </div>
+        </mat-card>
+      </div>
+      </div>
+    </div>
+  </div>

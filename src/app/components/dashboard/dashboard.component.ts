@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   lastName = localStorage.getItem('lastName');
   backUrl: any;
   url: any;
+  listView : boolean = false;
 
   constructor(private router: Router, public dialog: MatDialog, private noteLabelService: UserServicesService) { }
 
@@ -100,6 +101,10 @@ export class DashboardComponent implements OnInit {
   changeimage(){
     this.backUrl = localStorage.getItem('imageUrl');
     this.url = 'http://fundoonotes.incubation.bridgelabz.com/' + this.backUrl;
+  }
+  changeView() {
+    this.listView = !this.listView;
+    this.noteLabelService.changeBool(this.listView);
   }
 
 }
