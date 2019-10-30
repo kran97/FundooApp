@@ -43,11 +43,13 @@ export class IconListComponent implements OnInit {
   messageDelete: string = "Deleting note..."
   messageArchive: string = "Archive..."
   messageCollab: string = "Collab..."
+  messageQnA: string = "Question..."
   @Output() messageEvent = new EventEmitter<string>();
   @Output() labelEvent = new EventEmitter<string>();
   @Output() collabEvent = new EventEmitter<string>();
   @Output() remindEvent = new EventEmitter<string>();
-  
+  @Output() questionEvent = new EventEmitter<string>();
+
   constructor(private noteLabelService: UserServicesService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -64,6 +66,10 @@ export class IconListComponent implements OnInit {
 
   archiveNote() {
     this.messageEvent.emit(this.messageArchive);
+  }
+
+  gotoQnA() {
+    this.questionEvent.emit(this.messageQnA);
   }
 
   labelNote(label:any) {

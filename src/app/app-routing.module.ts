@@ -19,6 +19,7 @@ import { SearchComponent } from "./components/search/search.component";
 import { ImageDialogComponent } from "./components/image-dialog/image-dialog.component";
 import { LabelsComponent } from './components/labels/labels.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
+import { QuestionComponent } from "./components/question/question.component";
 
 const routes: Routes = [
   {
@@ -43,7 +44,8 @@ const routes: Routes = [
       {path: 'trash', component: TrashComponent},
       {path: 'search', component: SearchComponent},
       {path: 'image-card', component: ImageDialogComponent},
-      {path: 'label/:labelname', component: LabelsComponent}
+      {path: 'label/:labelname', component: LabelsComponent},
+      {path: 'QuestionAnswer/:id', component: QuestionComponent}
     ]
   },
   {

@@ -186,4 +186,18 @@ export class ReminderComponent implements OnInit {
     }
   }
 
+  removeReminder(id) {
+    let content = {
+      "noteIdList" : [id]
+    }
+    let options = {
+      data: content,
+      purpose: "notes/removeReminderNotes"
+    }
+    this.noteService.reminderDeleteService(options).subscribe((response)=> {
+      console.log("delete successful... ",response);
+      this.noteService.changeMessage("Delete Done")
+    })
+  }
+
 }

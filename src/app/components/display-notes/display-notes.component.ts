@@ -4,6 +4,7 @@ import { Note } from "../../models/note.model";
 import { MatDialog } from '@angular/material';
 import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
 import { CollaboratorComponent } from "../collaborator/collaborator.component";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-display-notes',
@@ -22,8 +23,9 @@ export class DisplayNotesComponent implements OnInit {
   color: any;
   label: any;
   listView: any = false;
+  remind: any;
 
-  constructor(private noteService: UserServicesService, public dialog: MatDialog) { }
+  constructor(private noteService: UserServicesService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.receiveNotes();
@@ -186,8 +188,7 @@ export class DisplayNotesComponent implements OnInit {
     }
   }
 
-  save($event, id){
-    //console.log("date........",picker3._validSelected);
+  saveReminder($event, id){
     let remind = {
       reminder: $event._validSelected,
       noteIdList: [id],
@@ -196,13 +197,32 @@ export class DisplayNotesComponent implements OnInit {
       data: remind,
       purpose: "notes/addUpdateReminderNotes"
     }
-    //console.log("asdasdasd...",archive);
     
     this.noteService.remindernoteservice(options).subscribe((response:any) => {
       console.log("succcessss.....",response);
       
       this.noteService.changeMessage("Hello from Sibling")
     });
+  }
+
+  removeReminder(id) {
+    let content = {
+      "noteIdList" : [id]
+    }
+    let options = {
+      data: content,
+      purpose: "notes/removeReminderNotes"
+    }
+    this.noteService.reminderDeleteService(options).subscribe((response)=> {
+      console.log("delete successful... ",response);
+      this.noteService.changeMessage("Delete Done")
+    })
+  }
+
+  gotoQuestion($event, id) {
+    if($event == "Question...") {
+      this.router.navigate(['QuestionAnswer/'+id])
+    }
   }
 
 }

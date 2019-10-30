@@ -15,6 +15,14 @@
               </mat-chip>
             </div>
           </mat-chip-list>
+
+          <mat-chip-list>
+            <div *ngFor="let remind of record.reminder" fxLayout="row wrap" fxLayoutAlign="space-between center">
+              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{remind}}<mat-icon class="label-cross" (click)="removeReminder(record.id)">cancel</mat-icon>
+              </mat-chip>
+            </div>
+          </mat-chip-list>
+
           <mat-chip-list>
             <div *ngFor="let collab of record.collaborators" fxLayout="row wrap" fxLayoutAlign="space-between center">
                 <mat-icon (click)="openCollabDialog('Collab...', record.id)" matTooltip="{{collab.firstName}}">account_circle</mat-icon>
@@ -41,6 +49,14 @@
               </mat-chip>
             </div>
           </mat-chip-list>
+
+          <mat-chip-list>
+            <div *ngFor="let remind of record.reminder" fxLayout="row wrap" fxLayoutAlign="space-between center">
+              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{remind}}<mat-icon class="label-cross" (click)="removeReminder(record.id)">cancel</mat-icon>
+              </mat-chip>
+            </div>
+          </mat-chip-list>
+
           <mat-chip-list>
             <div *ngFor="let collab of record.collaborators" fxLayout="row wrap" fxLayoutAlign="space-between center">
                 <mat-icon (click)="openCollabDialog('Collab...', record.id)" matTooltip="{{collab.firstName}}">account_circle</mat-icon>

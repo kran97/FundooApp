@@ -21,9 +21,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from "@angular/material";
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatListModule} from '@angular/material/list';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { TakeNotesComponent } from './components/take-notes/take-notes.component';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -50,6 +50,9 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from "@angular/material";
 import { MatSelectModule } from "@angular/material";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { QuestionComponent } from './components/question/question.component';
+
 @NgModule({
   declarations: [
 
@@ -73,7 +76,8 @@ import { MatSelectModule } from "@angular/material";
     SearchComponent,
     ImageDialogComponent,
     LabelsComponent,
-    CollaboratorComponent
+    CollaboratorComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +107,8 @@ import { MatSelectModule } from "@angular/material";
     MatChipsModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [
     UserServicesService,
