@@ -2,8 +2,8 @@
   <div fxFlex='80'>
     <div fxLayoutAlign="start start" fxLayoutAlign.sm="center stretch" fxLayout.xs="column" fxLayout.sm="column"
       class="cardcontainer">
-      <div *ngIf="listView==true" fxLayout="row wrap" fxLayoutGap="14px">
-        <mat-card *ngFor="let record of records" class="card" fxFlex="90"
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch "fxLayoutGap="14px">
+        <mat-card *ngFor="let record of records" class="card" [fxFlex]="listView?'90':'28'"
           [ngStyle]="{'background-color': record.color}">
           <div (click)="editDialog(record.title, record.description, record.color, record.id)">
             <p>{{record.title}}</p>
@@ -19,7 +19,7 @@
 
           <mat-chip-list>
             <div *ngFor="let remind of record.reminder" fxLayout="row wrap" fxLayoutAlign="space-between center">
-              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{remind}}<mat-icon
+              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{remind | date: shortdate}}<mat-icon
                   class="label-cross" (click)="removeReminder(record.id)">clear</mat-icon>
               </mat-chip>
             </div>
@@ -40,8 +40,8 @@
           </div>
         </mat-card>
       </div>
-      <div *ngIf="listView==false" fxLayout="row wrap" fxLayoutGap="14px">
-        <mat-card *ngFor="let record of records" class="card" fxFlex="28" fxFlex.xs="98" fxFlex.sm="90"
+      <!-- <div *ngIf="listView==false" fxLayout="row wrap" fxLayoutGap="14px">
+        <mat-card *ngFor="let record of records" class="card"
           [ngStyle]="{'background-color': record.color}">
           <div (click)="editDialog(record.title, record.description, record.color, record.id)">
             <p>{{record.title}}</p>
@@ -57,7 +57,7 @@
 
           <mat-chip-list>
             <div *ngFor="let remind of record.reminder" fxLayout="row wrap" fxLayoutAlign="space-between center">
-              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{remind}}<mat-icon
+              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{remind | date: shortdate}}<mat-icon
                   class="label-cross" (click)="removeReminder(record.id)">clear</mat-icon>
               </mat-chip>
             </div>
@@ -77,7 +77,7 @@
             </app-icon-list>
           </div>
         </mat-card>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

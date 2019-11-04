@@ -1,25 +1,40 @@
 <div fxLayout="column" fxLayoutAlign="space-around center" ng-blur="close()">
-    <mat-card [class.mat-elevation-z5]="isActive" [ngStyle]="{'background-color': color}" fxLayout="row" class="mat-card-note" fxLayoutAlign="space-between"
-      fxFlex="50" fxLayoutGap="100">
-  
-      <input class="take-note-input" [ngStyle]="{'background-color': color}" matInput placeholder="Take a note..." (click)="Toggle()" *ngIf="hide" fxFlex="100" fxLayout="row">
+  <mat-card [class.mat-elevation-z5]="isActive" [ngStyle]="{'background-color': color}" fxLayout="row"
+    class="mat-card-note" fxLayoutAlign="space-between" fxFlex="50" fxLayoutGap="100">
 
-      <div *ngIf="show" fxFlex="100">
-        <div fxLayout="row" fxLayoutAlign="space-between end">
-          <textarea class="text-area" matInput cdkTextareaAutosize [ngStyle]="{'background-color': color}" #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"></textarea>
-            <mat-icon matSuffix>turned_in_not</mat-icon>
-        </div>
-        <div>
-          <textarea autofocus class="text-area" [ngStyle]="{'background-color': color}" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" [formControl]="note" matInput placeholder="Take a note..."></textarea></div>
-        <mat-action-row fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutAlign.xs="center center">
-            <app-icon-list fxFlex='100' (messageEvent)="colorChange($event)"></app-icon-list>
-          <button style="float: right" matTooltip="Close and Save" fxLayoutAlign="end end" mat-button (click)="close()">Close</button>
-        </mat-action-row>
+    <input class="take-note-input" [ngStyle]="{'background-color': color}" matInput placeholder="Take a note..."
+      (click)="Toggle()" *ngIf="hide" fxFlex="100" fxLayout="row">
+
+    <div *ngIf="show" fxFlex="100">
+      <div fxLayout="row" fxLayoutAlign="space-between end">
+        <textarea class="text-area" matInput cdkTextareaAutosize [ngStyle]="{'background-color': color}"
+          #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"></textarea>
+        <mat-icon matSuffix>turned_in_not</mat-icon>
       </div>
-      
-    </mat-card>
-    
-  </div>
+      <div>
+        <textarea autofocus class="text-area" [ngStyle]="{'background-color': color}" cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" [formControl]="note" matInput
+          placeholder="Take a note..."></textarea></div>
+      <div *ngIf="remind != ''">
+        <mat-chip-list>
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <mat-chip [ngStyle]="{'background-color': color}" class="label-chip">{{remind | date: shortdate}}<mat-icon 
+                class="label-cross" (click)="removeReminder()">clear</mat-icon>
+            </mat-chip>
+          </div>
+        </mat-chip-list>
+      </div>
+      <mat-action-row fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutAlign.xs="center center">
+        <app-icon-list fxFlex='100' (messageEvent)="colorChange($event)" (remindEvent)="saveReminder($event)">
+        </app-icon-list>
+        <button style="float: right" matTooltip="Close and Save" fxLayoutAlign="end end" mat-button
+          (click)="close()">Close</button>
+      </mat-action-row>
+    </div>
+
+  </mat-card>
+
+</div>
 
 
 

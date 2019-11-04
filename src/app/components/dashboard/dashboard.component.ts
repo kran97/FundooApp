@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getLabels();
-    // this.router.navigate(['']);
     this.noteLabelService.currentMessage.subscribe((res)=>{
       this.changeimage();
     })

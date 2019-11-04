@@ -221,6 +221,7 @@ export class DisplayNotesComponent implements OnInit {
 
   gotoQuestion($event, id) {
     if($event == "Question...") {
+      this.noteService.changeMessage(id);
       this.router.navigate(['QuestionAnswer/'+id])
     }
   }

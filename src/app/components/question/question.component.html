@@ -1,3 +1,9 @@
-<p>
-  question works!
-</p>
+<div class="ques-div">
+  
+  <div [froalaEditor] [(froalaModel)]="editorContent"></div>
+  <button mat-button (click)="submit()">Submit</button>
+</div>
+
+<div [innerHTML]="editorContent">
+
+</div>

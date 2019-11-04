@@ -45,3 +45,11 @@ mat-card{
 .cardcontainer {
     margin: auto;
 }
+
+//  fxFlex.xs="98" fxFlex.sm="90" fxFlex="28"
+
+.List {
+    flex-direction: column;
+    flex: 10;
+    flex-flow: column;
+}

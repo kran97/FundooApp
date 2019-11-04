@@ -52,6 +52,7 @@ import { MatNativeDateModule } from "@angular/material";
 import { MatSelectModule } from "@angular/material";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { QuestionComponent } from './components/question/question.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,9 @@ import { QuestionComponent } from './components/question/question.component';
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [
     UserServicesService,

@@ -20,6 +20,7 @@ export class TakeNotesComponent implements OnInit {
   options: any;
   message : string;
   color : any = "#ffffff";
+  remind: any = '';
 
   constructor(private noteService: UserServicesService) { }
 
@@ -35,6 +36,10 @@ export class TakeNotesComponent implements OnInit {
     this.color = $event;
   }
 
+  saveReminder($event) {
+    this.remind = $event._validSelected
+  }
+
   close() {
     if(this.title.value == '' && this.note.value == '') {
       this.show = !this.show;
@@ -45,7 +50,8 @@ export class TakeNotesComponent implements OnInit {
     this.noteModel = {
       title: this.title.value,
       description: this.note.value,
-      color: this.color
+      color: this.color,
+      reminder: this.remind
     }
 
     console.log(this.noteModel);
@@ -67,6 +73,8 @@ export class TakeNotesComponent implements OnInit {
     this.color = "#ffffff";
   }
 
-
+  removeReminder() {
+    this.remind = '';
+  }
 
 }
