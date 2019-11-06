@@ -13,7 +13,10 @@ export class UserServicesService {
 
   private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
-  message: string;
+  message: any;
+
+  private objSource = new BehaviorSubject({});
+  currentObj = this.objSource.asObservable();
 
   private booleanSource = new BehaviorSubject('');
   boolMessage = this.booleanSource.asObservable();
@@ -30,6 +33,10 @@ export class UserServicesService {
 
   changeMessage(message) {
     this.messageSource.next(message);
+  }
+
+  changeObj(message) {
+    this.objSource.next(message);
   }
 
   changeBool(bool) {
@@ -75,6 +82,16 @@ export class UserServicesService {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/x-www-form-urlencoded',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.get(this.link + options.purpose, httpOptions)
+  }
+
+  getNotes(options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
         'Authorization': localStorage.getItem('token')
       })
     }

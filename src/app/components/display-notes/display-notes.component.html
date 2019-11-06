@@ -38,46 +38,13 @@
               (collabEvent)="openCollabDialog($event, record.id)" (questionEvent)="gotoQuestion($event, record.id)">
             </app-icon-list>
           </div>
+          <div *ngIf="record.questionAndAnswerNotes.length>0" (click)="gotoQuestion('Question...', record.id)">
+            <mat-divider></mat-divider>
+            <p class="ques-title">question Asked</p>
+            <span [innerHTML]="record.questionAndAnswerNotes[0].message"></span>
+          </div>
         </mat-card>
       </div>
-      <!-- <div *ngIf="listView==false" fxLayout="row wrap" fxLayoutGap="14px">
-        <mat-card *ngFor="let record of records" class="card"
-          [ngStyle]="{'background-color': record.color}">
-          <div (click)="editDialog(record.title, record.description, record.color, record.id)">
-            <p>{{record.title}}</p>
-            <p>{{record.description}}</p>
-          </div>
-          <mat-chip-list>
-            <div *ngFor="let label of record.noteLabels" fxLayout="row wrap" fxLayoutAlign="space-between center">
-              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{label.label}}<mat-icon
-                  class="label-cross" (click)="removeLabel(label.id,record.id)">cancel</mat-icon>
-              </mat-chip>
-            </div>
-          </mat-chip-list>
-
-          <mat-chip-list>
-            <div *ngFor="let remind of record.reminder" fxLayout="row wrap" fxLayoutAlign="space-between center">
-              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{remind | date: shortdate}}<mat-icon
-                  class="label-cross" (click)="removeReminder(record.id)">clear</mat-icon>
-              </mat-chip>
-            </div>
-          </mat-chip-list>
-
-          <mat-chip-list>
-            <div *ngFor="let collab of record.collaborators" fxLayout="row wrap" fxLayoutAlign="space-between center">
-              <mat-icon (click)="openCollabDialog('Collab...', record.id)" matTooltip="{{collab.firstName}}">
-                account_circle</mat-icon>
-            </div>
-          </mat-chip-list>
-          <div>
-            <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)"
-              (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"
-              (labelEvent)="saveLabel($event, record.id)" (remindEvent)="saveReminder($event, record.id)"
-              (collabEvent)="openCollabDialog($event, record.id)" (questionEvent)="gotoQuestion($event, record.id)">
-            </app-icon-list>
-          </div>
-        </mat-card>
-      </div> -->
     </div>
   </div>
 </div>

@@ -1,9 +1,50 @@
-<div class="ques-div">
-  
-  <div [froalaEditor] [(froalaModel)]="editorContent"></div>
-  <button mat-button (click)="submit()">Submit</button>
+<div class="ques-div" fxLayoutAlign="space-between center" fxFlex="100" fxLayout="column">
+  <div fxLayout="column" class="semi-ques-div">
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="500px">
+      <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100" *ngFor="let note of notes">
+        <h1>{{note.title}}</h1>
+        <h3>{{note.description}}</h3>
+      </div>
+      <button mat-button class="close-btn" (click)="closeQues()">close</button>
+    </div>
+    <div *ngFor="let note of notes" fxFlex="100">
+      <div *ngIf="note.questionAndAnswerNotes.length==0" fxFlex="100">
+        <mat-divider></mat-divider><br>
+        <div [froalaEditor] [(froalaModel)]="editorContent"></div>
+        <div fxLayoutAlign="end end">
+          <button mat-button (click)="submit()">Submit</button>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+      <div *ngIf="note.questionAndAnswerNotes.length>0" fxFlex="100">
+        <mat-divider></mat-divider><br>
+        <h2>Question Asked</h2>
+        <p class="ques-asked" [innerHTML]="note.questionAndAnswerNotes[0].message"></p>
+        <mat-divider></mat-divider><br>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <div fxLayout="column">
+            <p class="ques-detail">{{note.questionAndAnswerNotes[0].user.firstName}}
+              {{note.questionAndAnswerNotes[0].user.lastName}}
+              {{note.questionAndAnswerNotes[0].user.modifiedDate | date: 'medium'}}</p>
+            <p class="ques-detail-ques" [innerHTML]="note.questionAndAnswerNotes[0].message"></p>
+          </div>
+          <mat-icon mat-icon-button class="btn" (click)="toggleFroala()">reply</mat-icon>
+          <mat-icon mat-icon-button class="btn">thumb_up</mat-icon>
+          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
+          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
+          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
+          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
+          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
+        </div>
+        <div *ngIf="froalaOpen==true">
+        <div [froalaEditor] [(froalaModel)]="replyContent"></div>
+        <div fxLayoutAlign="end end">
+          <button mat-button (click)="submitReply(note.questionAndAnswerNotes[0].id)">Submit</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div [innerHTML]="editorContent">
-
-</div>
+<!-- <div [innerHTML]="editorContent"></div> -->

@@ -175,8 +175,8 @@ export class DisplayNotesComponent implements OnInit {
   openCollabDialog($event, id: any) {
     if ($event == "Collab...") {
       this.dialogRef = this.dialog.open(CollaboratorComponent, {
-        width: '625px',
-        height: '325px',
+        width: 'auto',
+        height: 'auto',
         data: {
           noteIdList: id
         },
@@ -221,7 +221,11 @@ export class DisplayNotesComponent implements OnInit {
 
   gotoQuestion($event, id) {
     if($event == "Question...") {
-      this.noteService.changeMessage(id);
+      // let obj = {
+      //   title : title,
+      //   description: description
+      // }
+      // this.noteService.changeObj(obj);
       this.router.navigate(['QuestionAnswer/'+id])
     }
   }

@@ -2,6 +2,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl} from '@angular/forms';
 import { Note } from "../../models/note.model";
 import { UserServicesService } from "../../services/user-services.service";
+import { MatDialog } from '@angular/material';
+import { CollaboratorComponent } from "../collaborator/collaborator.component";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-take-notes',
@@ -21,8 +24,10 @@ export class TakeNotesComponent implements OnInit {
   message : string;
   color : any = "#ffffff";
   remind: any = '';
+  collab: any = [];
+  dialogRef: any;
 
-  constructor(private noteService: UserServicesService) { }
+  constructor(private noteService: UserServicesService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
   }
@@ -75,6 +80,21 @@ export class TakeNotesComponent implements OnInit {
 
   removeReminder() {
     this.remind = '';
+  }
+
+  openCollabDialog($event) {
+    if ($event == "Collab...") {
+      this.dialogRef = this.dialog.open(CollaboratorComponent, {
+        width: 'auto',
+        height: 'auto',
+        data: {
+          // noteIdList: id
+        },
+        panelClass: 'custom-modalbox'
+      });
+      this.dialogRef.afterClosed().subscribe(result => {
+      });
+    }
   }
 
 }

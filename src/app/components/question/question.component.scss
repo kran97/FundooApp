@@ -1,3 +1,31 @@
 .ques-div {
-    margin-top: 100px;
+    margin-top: 75px;
+}
+
+::ng-deep h1, h3, h2 {
+    font-weight: 75;
+    margin: 4px;
+}
+
+.close-btn {
+    height: 40px;
+}
+
+.ques-asked {
+    color: grey;
+}
+
+::ng-deep .ques-detail {
+    font-size: 12px;
+    margin: 0px;
+}
+
+::ng-deep .ques-detail-ques {
+    font-weight: 500;
+    font-size: 19px;
+    margin: 0px;
+}
+
+.btn {
+    cursor: pointer;
 }

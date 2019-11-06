@@ -94,4 +94,8 @@ export class CollaboratorComponent implements OnInit {
     });
   }
 
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
 }
