@@ -7,8 +7,13 @@ body{
     // margin-left: 31%;
     // margin-top: 50px;
     // position: absolute;
-    height: 90vh;
+    // height: 90vh;
     margin-top: 2%;
+}
+
+.gotoReg {
+    color: #4285F4;
+    cursor: pointer;
 }
 
 .card-title{
@@ -19,24 +24,10 @@ body{
     cursor: pointer;
 }
 
-.mat-header-img{
-    // width: 120px;
-    // height: 90px;
+.subtitle {
+    color: slategray;
 }
 
-.reg-input-name {
-    // margin-right: 20px;
-}
-
-.reg-input {
-    // width: 100%;
-}
-
-.gotoReg{
-    // float: right;
-    // margin-top: 5px;
-    // margin-right: 7 px;
-}
 .regButton{
     color: white;
     background-color: #4285F4;

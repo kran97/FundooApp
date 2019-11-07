@@ -1,0 +1,16 @@
+<div class="master-div" fxFlex="100" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="80px">
+  <p class="heading">Welcome to fundooNotes. Choose your service.</p>
+  <div class="card-div" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="50px">
+      <mat-card fxFlex="80" fxLayout="column" *ngFor="let serv of serviceArr" (click)="cartAdd(serv)" (click)="openDialog(serv)">
+        <mat-card-title>{{serv.price | currency: dollar}}</mat-card-title>
+        <mat-card-subtitle>{{serv.name}}</mat-card-subtitle>
+        <mat-card-content>
+          <ul>
+            <li class="desc">{{serv.description}}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+  </div>
+  <br>
+  <b><a class="gotoReg" routerLink="/login">Sign In</a></b>
+</div>

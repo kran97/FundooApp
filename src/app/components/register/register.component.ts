@@ -11,7 +11,8 @@ import { User } from "../../models/register.model";
 })
 export class RegisterComponent implements OnInit {
   hide = true;
-  
+  serv = [];
+
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -44,6 +45,25 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.getCartDetails();
+    if(!localStorage.getItem('cartId'))
+    {
+      this.router.navigate(['/product'])
+    }
+  }
+
+  getCartDetails() {
+    let cartId = localStorage.getItem('cartId');
+    let url = 'productcarts/getCartDetails/' + cartId
+    this.userService.getService(url).subscribe((result) => {
+      this.serv = result['data']['product'];
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  gotoProduct() {
+    this.router.navigate(['/product']);
   }
 
   OnRegister() {
@@ -52,7 +72,7 @@ export class RegisterComponent implements OnInit {
       lastName : this.lastName.value,
       email : this.email.value,
       password : this.password.value,
-      service : "advance"
+      service : this.serv['name']
     }
     let options = {
       data : this.userObj,

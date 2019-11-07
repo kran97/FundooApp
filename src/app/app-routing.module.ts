@@ -20,11 +20,19 @@ import { ImageDialogComponent } from "./components/image-dialog/image-dialog.com
 import { LabelsComponent } from './components/labels/labels.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 import { QuestionComponent } from "./components/question/question.component";
+import { ProductComponent } from './components/product/product.component';
+import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 
 const routes: Routes = [
   {
     
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'product', component: ProductComponent  
+  },
+  {
+    path: 'product-dialog', component: ProductDialogComponent
   },
   {
     path: 'signup', component: RegisterComponent
@@ -45,26 +53,26 @@ const routes: Routes = [
       {path: 'search', component: SearchComponent},
       {path: 'image-card', component: ImageDialogComponent},
       {path: 'label/:labelname', component: LabelsComponent},
-      {path: 'QuestionAnswer/:id', component: QuestionComponent}
+      {path: 'QuestionAnswer/:id', component: QuestionComponent},
+      {
+        path: 'dialog', component: DialogComponent
+      },
+      {
+        path: 'editDialog' , component: EditDialogComponent
+      },
+      {
+        path: 'collab' , component: CollaboratorComponent
+      },
+      {
+        path: 'takeNotes', component: TakeNotesComponent
+      },
+      {
+        path: 'icon-list', component: IconListComponent
+      },
+      {
+        path: 'display-cards', component: DisplayNotesComponent
+      }
     ]
-  },
-  {
-    path: 'dialog', component: DialogComponent
-  },
-  {
-    path: 'editDialog' , component: EditDialogComponent
-  },
-  {
-    path: 'collab' , component: CollaboratorComponent
-  },
-  {
-    path: 'takeNotes', component: TakeNotesComponent
-  },
-  {
-    path: 'icon-list', component: IconListComponent
-  },
-  {
-    path: 'display-cards', component: DisplayNotesComponent
   },
   {
     path: '**', redirectTo: ''

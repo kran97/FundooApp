@@ -1,6 +1,10 @@
-<input type='file' (change)="fileChangeEvent($event)">
+<mat-card>
 
-<image-cropper [imageChangedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)">
-</image-cropper>
+    <input type='file' (change)="fileChangeEvent($event)">
 
-<button (click)="uploadImage()">Done<mat-icon>done</mat-icon></button>
+    <image-cropper [imageChangedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)">
+    </image-cropper>
+
+    <button (click)="uploadImage()">Done<mat-icon>done</mat-icon></button>
+
+</mat-card>

@@ -90,7 +90,7 @@ export class DashboardComponent implements OnInit {
   }
 
   openImageDialog() {
-    const imgDialogRef = this.dialog.open(ImageDialogComponent, {width: '500px',height: '550px'});
+    const imgDialogRef = this.dialog.open(ImageDialogComponent, {width: '800px',height: '550px'});
 
     imgDialogRef.afterClosed().subscribe((res)=>{
       console.log('Image saved', res);

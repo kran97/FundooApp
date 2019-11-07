@@ -1,5 +1,5 @@
-<div fxFlex="100" fxLayoutAlign="space-around center">  
-<mat-card class="register-card" fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="40" fxFlex.sm="92" fxFlex.xs="100">
+<div fxFlex="100" fxLayoutAlign="center center">  
+<mat-card class="register-card" fxLayout="column" fxLayoutAlign="start stretch" fxFlex="40" fxFlex.sm="92" fxFlex.xs="100">
   <mat-card-header>
     <mat-card-title class="card-title"><b>Register Yourself!</b></mat-card-title>
     <mat-card-subtitle>Create your fundooApp Account Today!</mat-card-subtitle>
@@ -18,7 +18,7 @@
     <mat-error *ngIf="lastName.invalid">{{getErrorLastName()}}</mat-error>
   </mat-form-field>
 </div>
-<div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutAlign.sm="space-around center" fxLayoutAlign.xs="space-around center">
+<div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutAlign.sm="space-around center" fxLayoutAlign.xs="space-around center">
   <mat-form-field appearance="outline" class="reg-input">
     <mat-label>Email</mat-label>
     <input matInput placeholder="Enter your email" name="email" [formControl]="email" required>
@@ -39,6 +39,16 @@
       <mat-error *ngIf="confirmpassword.invalid">{{getErrorConfirmPassword()}}</mat-error>
   </mat-form-field>
 </div>
+
+<mat-card>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-card-title>{{serv.price | currency: dollar}}</mat-card-title>
+    <b><a class="gotoReg" (click)="gotoProduct()">Change Service?</a></b>
+  </div>
+  <mat-card-subtitle class="subtitle">{{serv.name}}</mat-card-subtitle>
+  <mat-card-content>{{serv.description}}</mat-card-content>
+</mat-card>
+
   <mat-card-actions fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-around center">
     <button class="regButton" mat-raised-button (click)="OnRegister()">Register</button>
     <b><a class="gotoReg" routerLink="login">Already a user?</a></b>

@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <p>{{serv.name | titlecase}} Pack Details</p>
+      <p>{{serv.price | currency: dollar}}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-tab-group>
+  <mat-tab label="Feature 1"> {{serv.description}} </mat-tab>
+  <mat-tab label="Feature 2"> {{serv.description}} </mat-tab>
+  <mat-tab label="Feature 3"> {{serv.description}} </mat-tab>
+</mat-tab-group>
+<br><br><br><br><br><br>
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button (click)="checkout()">Proceed to Checkout</button>
+</div>

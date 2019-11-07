@@ -53,6 +53,9 @@ import { MatSelectModule } from "@angular/material";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { QuestionComponent } from './components/question/question.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { ProductComponent } from './components/product/product.component';
+import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -78,7 +81,9 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     ImageDialogComponent,
     LabelsComponent,
     CollaboratorComponent,
-    QuestionComponent
+    QuestionComponent,
+    ProductComponent,
+    ProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +116,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     MatNativeDateModule,
     MatSnackBarModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    MatTabsModule
   ],
   providers: [
     UserServicesService,

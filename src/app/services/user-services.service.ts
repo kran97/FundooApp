@@ -55,6 +55,19 @@ export class UserServicesService {
     return this.http.post(this.link + url, userObj);
   }
 
+  getService(url: string) {
+    return this.http.get(this.link+url)
+  }
+
+  addToCart(data){
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json'
+      })
+    }
+    return this.http.post(this.link+'productcarts/addToCart', data, httpOptions)
+  }
+
   resetService(options) {
     console.log("Inside Reset Service...")
     console.log("options++++++", options)
