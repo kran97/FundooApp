@@ -72,7 +72,8 @@ export class RegisterComponent implements OnInit {
       lastName : this.lastName.value,
       email : this.email.value,
       password : this.password.value,
-      service : this.serv['name']
+      service : this.serv['name'],
+      cartId: localStorage.getItem('cartId')
     }
     let options = {
       data : this.userObj,

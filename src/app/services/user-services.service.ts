@@ -68,6 +68,16 @@ export class UserServicesService {
     return this.http.post(this.link+'productcarts/addToCart', data, httpOptions)
   }
 
+  getCartDetails(options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.get(this.link + options.purpose, httpOptions)
+  }
+
   resetService(options) {
     console.log("Inside Reset Service...")
     console.log("options++++++", options)
@@ -258,6 +268,39 @@ export class UserServicesService {
       })
     }
     return this.http.post(this.link+options.purpose, options.data, httpOptions);
+  }
+
+  updateCheckList(options){
+    let httpOptions = {    
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    console.log(options)
+    return this.http.post(this.link+"notes/"+options.noteId+"/checklist/"+options.checklistId+"/update", options.checklistdata, httpOptions);
+  }
+
+  deleteCheckList(options){
+    let httpOptions={
+      headers: new HttpHeaders({
+        'content-type':'application/json',
+        'Authorization' : localStorage.getItem('token')
+      })
+    }
+    console.log(options)
+    return this.http.post(this.link+"notes/"+options.noteId+"/checklist/"+options.checklistId+"/remove", options.checklistdata, httpOptions);
+  }
+
+  addList(options){
+    let httpOptions={
+      headers: new HttpHeaders({
+        'content-type':'application/json',
+        'Authorization' : localStorage.getItem('token')
+      })
+    }
+    console.log(options)
+    return this.http.post(this.link+"notes/"+options.noteId+"/checklist/add", options.data, httpOptions);
   }
 
 }

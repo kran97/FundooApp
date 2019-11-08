@@ -1,14 +1,52 @@
 <div fxLayoutAlign="space-around center">
   <div fxFlex='80'>
     <div fxLayoutAlign="start start" fxLayoutAlign.sm="center stretch" fxLayout.xs="column" fxLayout.sm="column"
-      class="cardcontainer">
-      <div fxLayout="row wrap" fxLayoutAlign="start stretch "fxLayoutGap="14px">
-        <mat-card *ngFor="let record of records" class="card" [fxFlex]="listView?'90':'28'"
+      class="cardcontainer" [fxLayout]="listView?'column':'row wrap'"  fxLayoutGap="14px">
+      <div fxLayoutAlign="start stretch" *ngFor="let record of records">
+        <mat-card [fxFlex]="listView?'100':''" [ngClass]="listView?'card2':'card'" fxLayout="column"
           [ngStyle]="{'background-color': record.color}">
-          <div (click)="editDialog(record.title, record.description, record.color, record.id)">
-            <p>{{record.title}}</p>
-            <p>{{record.description}}</p>
+          <div (click)="editDialog(record.title, record.description, record.color, record.id)" fxLayout="column">
+            <!-- <p>{{record.title}}</p> -->
+            <textarea class="text-area" matInput cdkTextareaAutosize [ngStyle]="{'background-color': record.color}" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="2" [(ngModel)]="record.title"></textarea>
+            <textarea class="text-area" matInput cdkTextareaAutosize [ngStyle]="{'background-color': record.color}" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="15" [(ngModel)]="record.description"></textarea>
           </div>
+
+          <!--CHECKBOXES-->
+
+          <div *ngFor='let list of record.noteCheckLists' class="above">
+            <div *ngIf="list.status=='open' && list.status!='close' && !list.isDeleted" fxLayout="row"
+              fxLayoutAlign="space-between center" fxFlex="80">
+              <div fxLayout="row" fxFlex="100">
+                <mat-icon (click)='removeCheckList(list, record.id)' class="visibleBox">check_box_outline_blank</mat-icon>
+                <input class="checklist" width="70%" [(ngModel)]="list.itemName" (keyup)="updateList(list, record.id)"
+                  (keyup.enter)="textareachange($event)">
+                <mat-icon class="visible" (click)="deleteCheckList(list,record.id)">clear</mat-icon>
+
+              </div>
+
+            </div>
+          </div>
+          <div *ngFor='let list of record.noteCheckLists' class="above">
+            <div *ngIf="list.status=='close' && !list.isDeleted" fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxLayout="row" fxFlex="100">
+                <mat-icon (click)='addCheckList(list, record.id)' class="visibleBox">check_box</mat-icon>
+                <input class="checklist" style="text-decoration:line-through;" [(ngModel)]="list.itemName"
+                  (keyup)="updateList(list, record.id)" (keydown.enter)="textareachange($event)">
+                <mat-icon class="visible" (click)="deleteCheckList(list,record.id)">clear</mat-icon>
+              </div>
+            </div>
+          </div>
+          <div *ngIf='listToggle && record.id == tempID' class="above">
+            <mat-divider></mat-divider>
+            <div fxLayout='row'>
+              <mat-icon>add</mat-icon><input (click)="$event.stopPropagation()" matInput [(ngModel)]="listItem"
+                placeholder="List Here" (keydown.enter)='addlist(record.id, record.noteCheckLists)'>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+
+          <!--CHECKLIST ENDS-->
+
           <mat-chip-list>
             <div *ngFor="let label of record.noteLabels" fxLayout="row wrap" fxLayoutAlign="space-between center">
               <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{label.label}}<mat-icon
@@ -19,8 +57,8 @@
 
           <mat-chip-list>
             <div *ngFor="let remind of record.reminder" fxLayout="row wrap" fxLayoutAlign="space-between center">
-              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{remind | date: shortdate}}<mat-icon
-                  class="label-cross" (click)="removeReminder(record.id)">clear</mat-icon>
+              <mat-chip [ngStyle]="{'background-color': record.color}" class="label-chip">{{remind | date: 'medium' }}
+                <mat-icon class="label-cross" (click)="removeReminder(record.id)">clear</mat-icon>
               </mat-chip>
             </div>
           </mat-chip-list>
@@ -35,7 +73,7 @@
             <app-icon-list class="icon" (messageEvent)="deleteNote($event, record.id)"
               (messageEvent)="archiveNote($event, record.id)" (messageEvent)="changeColor($event, record.id)"
               (labelEvent)="saveLabel($event, record.id)" (remindEvent)="saveReminder($event, record.id)"
-              (collabEvent)="openCollabDialog($event, record.id)" (questionEvent)="gotoQuestion($event, record.id)">
+              (collabEvent)="openCollabDialog($event, record.id)" (questionEvent)="gotoQuestion($event, record.id)" (checkEvent)="changeListToggle($event, record.id)">
             </app-icon-list>
           </div>
           <div *ngIf="record.questionAndAnswerNotes.length>0" (click)="gotoQuestion('Question...', record.id)">

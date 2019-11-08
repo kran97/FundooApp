@@ -36,3 +36,29 @@
 .label-cross {
     transform: scale(0.7);
 }
+
+.checklist {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.visible {
+    cursor: pointer;
+    opacity: 0.50;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.visiblez {
+    cursor: pointer;
+    opacity: 0.50;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.visibleBox {
+    cursor: pointer;
+}

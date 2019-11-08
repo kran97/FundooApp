@@ -82,7 +82,7 @@
     <mat-menu #menu>
       <button mat-menu-item (click)="deleteNote()">Delete Note</button>
       <button mat-menu-item [matMenuTriggerFor]="selectLabel">Labels</button>
-      <button mat-menu-item>Show checkboxes</button>
+      <button mat-menu-item (click)="toggleChecklist()">Show checkboxes</button>
       <button mat-menu-item (click)="gotoQnA()">Ask a Question</button>
     </mat-menu>
 
@@ -93,3 +93,31 @@
     </mat-menu>
 
   </div>
+
+  <!--CHECKBOXES-->
+
+  <!-- <div *ngFor='let list of record.noteCheckLists'  class="above" >
+    <div *ngIf="list.status=='open' && list.status!='close' && !list.isDeleted" fxLayout="row" fxLayoutAlign="space-between center" fxFlex="80">
+        <div fxLayout="row" fxFlex="100">
+            <mat-icon (click)='removeCheckList(list, record.id)' class="visible">check_box_outline_blank</mat-icon>
+            <input class="checklist" width="70%" [(ngModel)]="list.itemName" (keyup)="updateList(list, record.id)" (keyup.enter)="textareachange($event)">
+            <mat-icon class="visible" (click)="deleteCheckList(list,record.id)">cancel</mat-icon>
+
+        </div>
+
+    </div>
+</div>
+<div *ngFor='let list of record.noteCheckLists' class="above">
+    <div *ngIf="list.status=='close' && !list.isDeleted" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxFlex="100">
+            <mat-icon (click)='addCheckList(list, record.id)' class="visible">check_box</mat-icon>
+            <input class="checklist" style="text-decoration:line-through;" [(ngModel)]="list.itemName" (keyup)="updateList(list, record.id)" (keydown.enter)="textareachange($event)">
+            <mat-icon class="visible" (click)="deleteCheckList(list,record.id)">cancel</mat-icon>
+        </div>
+    </div>
+</div> -->
+<!-- <div *ngIf='listToggle && record.id == tempID' class="above">
+<mat-divider></mat-divider>
+<div fxLayout='row'><mat-icon>add</mat-icon><input (click)="$event.stopPropagation()" matInput [(ngModel)]="listItem" placeholder="List Here" (keydown.enter)='addlist(record.id, record.noteCheckLists)'></div>
+<mat-divider></mat-divider>
+</div> -->

@@ -56,6 +56,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { ProductComponent } from './components/product/product.component';
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CartComponent } from './components/cart/cart.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     CollaboratorComponent,
     QuestionComponent,
     ProductComponent,
-    ProductDialogComponent
+    ProductDialogComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -117,7 +120,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSnackBarModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
-    MatTabsModule
+    MatTabsModule,
+    MatStepperModule
   ],
   providers: [
     UserServicesService,

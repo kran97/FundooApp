@@ -38,6 +38,7 @@ export class IconListComponent implements OnInit {
     labelId: any;
     dialogRef: any;
     show: any = true;
+    showCheck: boolean = false;
     date = new FormControl(new Date());
 
   messageDelete: string = "Deleting note..."
@@ -49,6 +50,7 @@ export class IconListComponent implements OnInit {
   @Output() collabEvent = new EventEmitter<string>();
   @Output() remindEvent = new EventEmitter<string>();
   @Output() questionEvent = new EventEmitter<string>();
+  @Output() checkEvent = new EventEmitter<boolean>();
 
   constructor(private noteLabelService: UserServicesService, public dialog: MatDialog) { }
 
@@ -97,6 +99,11 @@ export class IconListComponent implements OnInit {
 
   save(picker3) {
     this.remindEvent.emit(picker3);
+  }
+
+  toggleChecklist() {
+    this.showCheck = !this.showCheck;
+    this.checkEvent.emit(this.showCheck);
   }
 
 }

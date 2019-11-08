@@ -22,6 +22,7 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
 import { QuestionComponent } from "./components/question/question.component";
 import { ProductComponent } from './components/product/product.component';
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,9 @@ const routes: Routes = [
       },
       {
         path: 'display-cards', component: DisplayNotesComponent
+      },
+      {
+        path: 'shoppingCart' , component: CartComponent
       }
     ]
   },

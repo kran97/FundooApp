@@ -25,13 +25,18 @@ export class DisplayNotesComponent implements OnInit {
   listView: any = false;
   remind: any;
 
+  list
+  listItem
+  listToggle: any;
+  tempID
+
   constructor(private noteService: UserServicesService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.receiveNotes();
-    this.noteService.currentMessage.subscribe((res) => {
-      this.receiveNotes();
-    });
+    // this.noteService.currentMessage.subscribe((res) => {
+    //   this.receiveNotes();
+    // });
     this.noteService.boolMessage.subscribe((res: any)=>{
       this.listView = res;
       this.receiveNotes();
@@ -228,6 +233,95 @@ export class DisplayNotesComponent implements OnInit {
       // this.noteService.changeObj(obj);
       this.router.navigate(['QuestionAnswer/'+id])
     }
+  }
+
+  //checklist functions 
+  removeCheckList(list, noteId){
+    let options ={
+      noteId : noteId,
+      checklistId : list.id,
+      checklistdata : list
+    }
+    console.log(options)
+    list.status="close";
+    this.noteService.updateCheckList(options).subscribe(data=>{
+      console.log('data', data)
+    }, 
+    error=>{
+      console.log("error", error)
+    })
+  }
+
+  deleteCheckList(list, noteId){
+    let options={
+      noteId : noteId,
+      checklistId : list.id,
+      checklistdata:list
+    }
+    list.status=''
+    this.noteService.deleteCheckList(options).subscribe(data=>{
+      console.log('data',data)
+    },error=>{
+      console.log("error",error)
+    })
+
+  }
+
+  updateList(list, noteId){
+    let options ={
+      noteId : noteId,
+      checklistId : list.id,
+      checklistdata : list
+    }
+    console.log(options)
+    this.noteService.updateCheckList(options).subscribe(data=>{
+      console.log('data', data)
+    }, 
+    error=>{
+      console.log("error", error)
+    })
+  }
+
+  addCheckList(list, noteId){
+    let options ={
+      noteId : noteId,
+      checklistId : list.id,
+      checklistdata : list
+    }
+    console.log(options)
+    list.status="open";
+    this.noteService.updateCheckList(options).subscribe(data=>{
+      console.log('data', data)
+    }, 
+    error=>{
+      console.log("error", error)
+    })
+  }
+
+  addlist(noteId, checklist){
+    console.log("noteid", noteId, "listItem", this.listItem)
+  let data={
+    itemName : this.listItem,
+    status : "open"
+  }
+  this.noteService.addList({
+    noteId, data
+    }).subscribe(data=>{
+      console.log('data',data)
+      checklist.push(data['data'].details)
+      this.listItem=""
+    }, error=>{
+      console.log("error",error)
+    })
+  }
+
+  changeListToggle($event, noteId){
+    this.listToggle = $event;
+    if(this.tempID!=noteId){
+      this.tempID = noteId;
+      this.listToggle = true
+    }
+    this.tempID = noteId;
   }
 
 }

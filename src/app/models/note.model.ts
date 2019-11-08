@@ -5,4 +5,5 @@ export class Note {
     label?: string;
     isPined?: boolean;
     reminder?: any
+    checklist?: any;
 }

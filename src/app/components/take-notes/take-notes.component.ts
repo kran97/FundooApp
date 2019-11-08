@@ -26,6 +26,9 @@ export class TakeNotesComponent implements OnInit {
   remind: any = '';
   collab: any = [];
   dialogRef: any;
+  listToggle
+  listItem
+  checklist = []
 
   constructor(private noteService: UserServicesService, public dialog: MatDialog, private router: Router) { }
 
@@ -52,11 +55,13 @@ export class TakeNotesComponent implements OnInit {
       this.color = "#ffffff";
       return;
     }
+    console.log("CHECKLIST ",this.checklist)
     this.noteModel = {
       title: this.title.value,
       description: this.note.value,
       color: this.color,
-      reminder: this.remind
+      reminder: this.remind,
+      checklist: JSON.stringify(this.checklist)
     }
 
     console.log(this.noteModel);
@@ -96,5 +101,30 @@ export class TakeNotesComponent implements OnInit {
       });
     }
   }
+
+  changeListToggle(event){
+    console.log(event);
+    this.listToggle = event
+    }
+    
+    addlist(){
+    let list={
+    itemName: this.listItem,
+    status : "open"
+    }
+    this.checklist.push(list)
+    this.listItem=""
+    }
+    
+    addCheckList(list){
+    list.status="open";
+    }
+    
+    deleteCheckList(list){
+    list.status=''
+    }
+    removeCheckList(list){
+    list.status="close"
+    }
 
 }

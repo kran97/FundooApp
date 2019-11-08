@@ -1,0 +1,84 @@
+<div class="master-div">
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Upgrade Package</ng-template>
+      <h3>Shopping Cart</h3>
+      <mat-divider></mat-divider><br>
+      <div *ngFor="let serv of service">
+        <div fxLayout="row" fxFlex="100" fxLayoutGap="15px">
+          <div fxLayout="row wrap" fxFlex="10">
+            {{serv.price | currency: dollar}} per month
+          </div>
+          <div fxLayout="row wrap" fxFlex="35">
+            {{serv.product.description}}
+          </div>
+          <div fxLayout="row wrap" fxFlex="20">
+            Service Name: {{serv.product.name}}
+          </div>
+          <div fxLayout="row wrap" fxFlex="10">
+            Validity: 1 Month
+          </div>
+          <button mat-button matStepperNext>Proceed to Checkout</button>
+        </div>
+      </div>
+      <br>
+      <mat-divider></mat-divider>
+      <div *ngFor="let serv of service">
+        <p class="subtotal">Subtotal({{service.length}} item): {{serv.price | currency:dollar}}</p>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Review Your Order</ng-template>
+        <h3>Order List</h3>
+        <mat-divider></mat-divider><br>
+        <div *ngFor="let serv of service">
+          <div fxLayout="row" fxFlex="100" fxLayoutGap="15px">
+            <div fxLayout="row wrap" fxFlex="10">
+              {{serv.price | currency: dollar}} per month
+            </div>
+            <div fxLayout="row wrap" fxFlex="35">
+              {{serv.product.description}}
+            </div>
+            <div fxLayout="row wrap" fxFlex="20">
+              Service Name: {{serv.product.name}}
+            </div>
+            <div fxLayout="row wrap" fxFlex="10">
+              Validity: 1 Month
+            </div>
+            <button mat-button matStepperNext (click)="placeOrder(serv.id, secondCtrl)">Place Order</button>
+          </div>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+        Please enter your address to checkout: <br>
+        <mat-form-field>
+          <textarea matInput placeholder="Address" formControlName="secondCtrl" required></textarea>
+        </mat-form-field>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Purchases</ng-template>
+      <h3>Order List</h3>
+      <mat-divider></mat-divider><br>
+      <div *ngFor="let serv of service">
+        <div fxLayout="row" fxFlex="100" fxLayoutGap="35px">
+          <div fxLayout="row wrap" fxFlex="10">
+            {{serv.price | currency: dollar}} per month
+          </div>
+          <div fxLayout="row wrap" fxFlex="40">
+            {{serv.product.description}}
+          </div>
+          <div fxLayout="row wrap" fxFlex="20">
+            Service Name: {{serv.product.name}}
+          </div>
+          <div fxLayout="row wrap" fxFlex="20">
+            Validity: 1 Month
+          </div>
+        </div>
+      </div>
+      <br>
+      <mat-divider></mat-divider>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

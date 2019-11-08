@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   url: any;
   listView : boolean = false;
 
-  constructor(private router: Router, public dialog: MatDialog, private noteLabelService: UserServicesService) { }
+  constructor(private router: Router, public dialog: MatDialog, private noteLabelService: UserServicesService) {  }
 
   ngOnInit() {
     this.getLabels();
@@ -50,7 +50,9 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['label/'+label])
     this.noteLabelService.changeMessage(label);
   }
-
+  gotoCart() {
+    this.router.navigate(['shoppingCart']);
+  }
 
   exitApp() {
     localStorage.clear();
@@ -58,13 +60,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getLabels() {
-
     const options = {
       purpose: 'noteLabels/getNoteLabelList',
     };
     this.noteLabelService.getWithToken(options).subscribe((response: any) => {
       this.labels = response.data.details.reverse();
-      console.log(response.data.details);
     }, (error) => {
       console.log(error.statusText);
     });

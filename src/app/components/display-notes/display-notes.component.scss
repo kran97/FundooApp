@@ -7,7 +7,13 @@ mat-card{
     border-radius: 20px;
     margin:2px;
     word-break: break-word;
-    // position: fixed;
+}
+.text-area {
+    outline: none;
+    border: transparent;
+    resize: none;
+    overflow: hidden;
+    resize: none;
 }
 
 // .ques-title {
@@ -16,6 +22,25 @@ mat-card{
 // }
 
 .card {
+    min-width: 250px;
+    max-width: 250px;
+    size: unset;
+    resize: none;
+    .icon{
+        opacity: 0;
+    }
+    &:hover{
+        .icon{
+            opacity: 1;
+        }
+    }
+    margin-bottom: 14px;
+}
+
+.card2 {
+    size: unset;
+    resize: none;
+    width: 850px;
     .icon{
         opacity: 0;
     }
@@ -57,4 +82,22 @@ mat-card{
     flex-direction: column;
     flex: 10;
     flex-flow: column;
+}
+
+.checklist {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.visible {
+    cursor: pointer;
+    opacity: 0.50;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.visibleBox {
+    cursor: pointer;
 }
