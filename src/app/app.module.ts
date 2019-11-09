@@ -58,6 +58,7 @@ import { ProductDialogComponent } from './components/product-dialog/product-dial
 import { MatTabsModule } from '@angular/material/tabs';
 import { CartComponent } from './components/cart/cart.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
@@ -121,7 +122,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     MatTabsModule,
-    MatStepperModule
+    MatStepperModule,
+    BarRatingModule
   ],
   providers: [
     UserServicesService,

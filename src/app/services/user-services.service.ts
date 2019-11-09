@@ -78,6 +78,16 @@ export class UserServicesService {
     return this.http.get(this.link + options.purpose, httpOptions)
   }
 
+  placeOrderService(options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.post(this.link + options.purpose, options.data, httpOptions)
+  }
+
   resetService(options) {
     console.log("Inside Reset Service...")
     console.log("options++++++", options)

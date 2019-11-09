@@ -46,14 +46,14 @@
             <div fxLayout="row wrap" fxFlex="10">
               Validity: 1 Month
             </div>
-            <button mat-button matStepperNext (click)="placeOrder(serv.id, secondCtrl)">Place Order</button>
+            <button mat-button matStepperNext (click)="placeOrder(serv.id)">Place Order</button>
           </div>
         </div>
         <br>
         <mat-divider></mat-divider>
         Please enter your address to checkout: <br>
         <mat-form-field>
-          <textarea matInput placeholder="Address" formControlName="secondCtrl" required></textarea>
+          <textarea matInput placeholder="Address" formControlName="secondCtrl" [(ngModel)]="address" required></textarea>
         </mat-form-field>
       </form>
     </mat-step>

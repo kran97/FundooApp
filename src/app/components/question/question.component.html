@@ -21,27 +21,104 @@
         <h2>Question Asked</h2>
         <p class="ques-asked" [innerHTML]="note.questionAndAnswerNotes[0].message"></p>
         <mat-divider></mat-divider><br>
-        <div fxLayout="row" fxLayoutGap="20px">
+        <!--Loop must start here-->
+        <div class="reply" fxLayout="row" fxLayoutGap="20px">
           <div fxLayout="column">
             <p class="ques-detail">{{note.questionAndAnswerNotes[0].user.firstName}}
               {{note.questionAndAnswerNotes[0].user.lastName}}
-              {{note.questionAndAnswerNotes[0].user.modifiedDate | date: 'medium'}}</p>
+              {{note.questionAndAnswerNotes[0].modifiedDate | date: 'medium'}}</p>
             <p class="ques-detail-ques" [innerHTML]="note.questionAndAnswerNotes[0].message"></p>
           </div>
           <mat-icon mat-icon-button class="btn" (click)="toggleFroala()">reply</mat-icon>
           <mat-icon mat-icon-button class="btn">thumb_up</mat-icon>
-          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
-          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
-          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
-          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
-          <mat-icon mat-icon-button class="btn">star_border</mat-icon>
+          <bar-rating [(rate)]="rate" [max]="5" [theme]="'default'" [(ngModel)]="rate"></bar-rating>
+        </div>
+        <div fxLayoutAlign="end end">
+          <button mat-button *ngIf="!viewReply" (click)="toggleReply()">
+            <mat-icon>keyboard_arrow_down</mat-icon> View reply
+          </button>
+          <button mat-button *ngIf="viewReply" (click)="toggleReply()">
+            <mat-icon>keyboard_arrow_up</mat-icon> Hide reply
+          </button>
         </div>
         <div *ngIf="froalaOpen==true">
-        <div [froalaEditor] [(froalaModel)]="replyContent"></div>
-        <div fxLayoutAlign="end end">
-          <button mat-button (click)="submitReply(note.questionAndAnswerNotes[0].id)">Submit</button>
+          <div [froalaEditor] [(froalaModel)]="replyContent"></div>
+          <div fxLayoutAlign="end end">
+            <button mat-button (click)="submitReply(note.questionAndAnswerNotes[0].id)">Submit</button>
+          </div>
         </div>
-      </div>
+        <div *ngIf="viewReply">
+          <div *ngFor="let ques of note.questionAndAnswerNotes">
+            <div *ngIf="ques.isApproved==true && ques.parentId == note.questionAndAnswerNotes[0].id ">
+              <div class="reply2" fxLayout="row" fxLayoutGap="20px">
+                <div fxLayout="column">
+                  <p class="ques-detail">{{ques.user.firstName}}
+                    {{ques.user.lastName}}
+                    {{ques.modifiedDate | date: 'medium'}}</p>
+                  <p class="ques-detail-ques" [innerHTML]="ques.message"></p>
+                </div>
+                <mat-icon mat-icon-button class="btn" (click)="toggleFroala1(ques.id)">reply</mat-icon>
+                <mat-icon mat-icon-button class="btn">thumb_up</mat-icon>
+                <bar-rating [(rate)]="rate" [max]="5" [theme]="'default'" [(ngModel)]="rate"></bar-rating>
+              </div>
+              <div fxLayoutAlign="end end">
+                <button mat-button *ngIf="!viewReply1" (click)="toggleReply1(ques.id)">
+                  <mat-icon>keyboard_arrow_down</mat-icon> View reply
+                </button>
+
+                <button mat-button *ngIf="viewReply1==ques.id" (click)="toggleReply1(false)">
+                  <mat-icon>keyboard_arrow_up</mat-icon> Hide reply
+                </button>
+              </div>
+              <div *ngIf="froalaOpen1==ques.id">
+                <div [froalaEditor] [(froalaModel)]="replyContent"></div>
+                <div fxLayoutAlign="end end">
+                  <button mat-button (click)="submitReply(ques.id)">Submit</button>
+                </div>
+              </div>
+                <!--hdvhsfcdsafc-->
+
+                <div *ngIf="viewReply1==ques.id">
+                  <div *ngFor="let quest of note.questionAndAnswerNotes">
+                    <!-- {{ques.id}} {{quest.parentId}} -->
+                    <div *ngIf="quest.isApproved==true && quest.parentId == ques.id ">
+                      <div class="reply3" fxLayout="row" fxLayoutGap="20px">
+                        <div fxLayout="column">
+                          <p class="ques-detail">{{quest.user.firstName}}
+                            {{quest.user.lastName}}
+                            {{quest.modifiedDate | date: 'medium'}}</p>
+                          <p class="ques-detail-ques" [innerHTML]="quest.message"></p>
+                        </div>
+                        <mat-icon mat-icon-button class="btn" (click)="toggleFroala1(quest.id)">reply</mat-icon>
+                        <mat-icon mat-icon-button class="btn">thumb_up</mat-icon>
+                        <bar-rating [(rate)]="rate" [max]="5" [theme]="'default'" [(ngModel)]="rate"></bar-rating>
+                      </div>
+                      <!-- <div fxLayoutAlign="end end">
+                        <button mat-button *ngIf="!viewReply1" (click)="toggleReply1(quest.id)">
+                          <mat-icon>keyboard_arrow_down</mat-icon> View reply
+                        </button>
+                        <button mat-button *ngIf="viewReply1==quest.id" (click)="toggleReply1(false)">
+                          <mat-icon>keyboard_arrow_up</mat-icon> Hide reply
+                        </button>
+                      </div> -->
+                      <!-- <div *ngIf="froalaOpen1==quest.id">
+                        <div [froalaEditor] [(froalaModel)]="replyContent"></div>
+                        <div fxLayoutAlign="end end">
+                          <button mat-button (click)="submitReply(quest.id)">Submit</button>
+                        </div>
+                      </div> -->
+                      <mat-divider></mat-divider><br>
+                    </div>
+                  </div>
+                </div>
+
+                <!--jhsbdvsdvbk-->
+              
+              
+              <mat-divider></mat-divider><br>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
