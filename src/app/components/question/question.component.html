@@ -76,11 +76,10 @@
                   <button mat-button (click)="submitReply(ques.id)">Submit</button>
                 </div>
               </div>
-                <!--hdvhsfcdsafc-->
+                <!--reply of reply start-->
 
                 <div *ngIf="viewReply1==ques.id">
                   <div *ngFor="let quest of note.questionAndAnswerNotes">
-                    <!-- {{ques.id}} {{quest.parentId}} -->
                     <div *ngIf="quest.isApproved==true && quest.parentId == ques.id ">
                       <div class="reply3" fxLayout="row" fxLayoutGap="20px">
                         <div fxLayout="column">
@@ -89,30 +88,15 @@
                             {{quest.modifiedDate | date: 'medium'}}</p>
                           <p class="ques-detail-ques" [innerHTML]="quest.message"></p>
                         </div>
-                        <mat-icon mat-icon-button class="btn" (click)="toggleFroala1(quest.id)">reply</mat-icon>
                         <mat-icon mat-icon-button class="btn">thumb_up</mat-icon>
                         <bar-rating [(rate)]="rate" [max]="5" [theme]="'default'" [(ngModel)]="rate"></bar-rating>
                       </div>
-                      <!-- <div fxLayoutAlign="end end">
-                        <button mat-button *ngIf="!viewReply1" (click)="toggleReply1(quest.id)">
-                          <mat-icon>keyboard_arrow_down</mat-icon> View reply
-                        </button>
-                        <button mat-button *ngIf="viewReply1==quest.id" (click)="toggleReply1(false)">
-                          <mat-icon>keyboard_arrow_up</mat-icon> Hide reply
-                        </button>
-                      </div> -->
-                      <!-- <div *ngIf="froalaOpen1==quest.id">
-                        <div [froalaEditor] [(froalaModel)]="replyContent"></div>
-                        <div fxLayoutAlign="end end">
-                          <button mat-button (click)="submitReply(quest.id)">Submit</button>
-                        </div>
-                      </div> -->
                       <mat-divider></mat-divider><br>
                     </div>
                   </div>
                 </div>
 
-                <!--jhsbdvsdvbk-->
+                <!--reply of reply end-->
               
               
               <mat-divider></mat-divider><br>
