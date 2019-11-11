@@ -21,7 +21,7 @@
         <h2>Question Asked</h2>
         <p class="ques-asked" [innerHTML]="note.questionAndAnswerNotes[0].message"></p>
         <mat-divider></mat-divider><br>
-        <!--Loop must start here-->
+
         <div class="reply" fxLayout="row" fxLayoutGap="20px">
           <div fxLayout="column">
             <p class="ques-detail">{{note.questionAndAnswerNotes[0].user.firstName}}
@@ -30,7 +30,22 @@
             <p class="ques-detail-ques" [innerHTML]="note.questionAndAnswerNotes[0].message"></p>
           </div>
           <mat-icon mat-icon-button class="btn" (click)="toggleFroala()">reply</mat-icon>
-          <mat-icon mat-icon-button class="btn">thumb_up</mat-icon>
+          <div fxLayout="column">
+            <!-- <mat-icon mat-icon-button class="btn" *ngIf="!like" (click)="likeFunction(note.questionAndAnswerNotes[0].id)">thumb_up_off_alt</mat-icon>
+            <mat-icon mat-icon-button class="btn" *ngIf="like" (click)="likeFunction(note.questionAndAnswerNotes[0].id)">thumb_up_alt</mat-icon> -->
+            <!-- <p class="likesCount">{{count}} likes</p> -->
+            <mat-icon mat-icon-button class="btn" (click)="like1(note.questionAndAnswerNotes[0].id)">thumb_up_off_alt
+            </mat-icon>
+            <mat-icon mat-icon-button class="btn" (click)="dislike1(note.questionAndAnswerNotes[0].id)">
+              thumb_down_off_alt</mat-icon>
+            <!-- Count of Like -->
+            <div *ngIf="counter(note.questionAndAnswerNotes[0].like)">
+
+            </div>
+            <div>{{counting}} likes</div>
+          </div>
+
+
           <bar-rating [(rate)]="rate" [max]="5" [theme]="'default'" [(ngModel)]="rate"></bar-rating>
         </div>
         <div fxLayoutAlign="end end">
@@ -58,7 +73,25 @@
                   <p class="ques-detail-ques" [innerHTML]="ques.message"></p>
                 </div>
                 <mat-icon mat-icon-button class="btn" (click)="toggleFroala1(ques.id)">reply</mat-icon>
-                <mat-icon mat-icon-button class="btn">thumb_up</mat-icon>
+                <!-- <div fxLayout="column"> -->
+                <!-- <mat-icon mat-icon-button class="btn" *ngIf="!likeReply" (click)="likeFunctionReply(ques.id)">thumb_up_off_alt</mat-icon>
+                  <mat-icon mat-icon-button class="btn" *ngIf="likeReply" (click)="likeFunctionReply(ques.id)">thumb_up_alt</mat-icon> -->
+                <!-- <p class="likesCount">{{countReply}} likes</p>
+                </div> -->
+
+                <div fxLayout="column">
+                  <!-- <mat-icon mat-icon-button class="btn" *ngIf="!like" (click)="likeFunction(note.questionAndAnswerNotes[0].id)">thumb_up_off_alt</mat-icon>
+                  <mat-icon mat-icon-button class="btn" *ngIf="like" (click)="likeFunction(note.questionAndAnswerNotes[0].id)">thumb_up_alt</mat-icon> -->
+                  <!-- <p class="likesCount">{{count}} likes</p> -->
+                  <mat-icon mat-icon-button class="btn" (click)="like1(ques.id)">thumb_up_off_alt</mat-icon>
+                  <mat-icon mat-icon-button class="btn" (click)="dislike1(ques.id)">thumb_down_off_alt</mat-icon>
+                  <!-- Count of Like -->
+                  <div *ngIf="counter(ques.like)">
+
+                  </div>
+                  <div>{{counting}} likes</div>
+                </div>
+
                 <bar-rating [(rate)]="rate" [max]="5" [theme]="'default'" [(ngModel)]="rate"></bar-rating>
               </div>
               <div fxLayoutAlign="end end">
@@ -76,29 +109,47 @@
                   <button mat-button (click)="submitReply(ques.id)">Submit</button>
                 </div>
               </div>
-                <!--reply of reply start-->
+              <!--reply of reply start-->
 
-                <div *ngIf="viewReply1==ques.id">
-                  <div *ngFor="let quest of note.questionAndAnswerNotes">
-                    <div *ngIf="quest.isApproved==true && quest.parentId == ques.id ">
-                      <div class="reply3" fxLayout="row" fxLayoutGap="20px">
-                        <div fxLayout="column">
-                          <p class="ques-detail">{{quest.user.firstName}}
-                            {{quest.user.lastName}}
-                            {{quest.modifiedDate | date: 'medium'}}</p>
-                          <p class="ques-detail-ques" [innerHTML]="quest.message"></p>
-                        </div>
-                        <mat-icon mat-icon-button class="btn">thumb_up</mat-icon>
-                        <bar-rating [(rate)]="rate" [max]="5" [theme]="'default'" [(ngModel)]="rate"></bar-rating>
+              <div *ngIf="viewReply1==ques.id">
+                <div *ngFor="let quest of note.questionAndAnswerNotes">
+                  <div *ngIf="quest.isApproved==true && quest.parentId == ques.id ">
+                    <div class="reply3" fxLayout="row" fxLayoutGap="20px">
+                      <div fxLayout="column">
+                        <p class="ques-detail">{{quest.user.firstName}}
+                          {{quest.user.lastName}}
+                          {{quest.modifiedDate | date: 'medium'}}</p>
+                        <p class="ques-detail-ques" [innerHTML]="quest.message"></p>
                       </div>
-                      <mat-divider></mat-divider><br>
+                      <!-- <div fxLayout="column">
+                          <mat-icon mat-icon-button class="btn" *ngIf="!likeReplyReply" (click)="likeFunctionReplyReply(quest.id)">thumb_up_off_alt</mat-icon>
+                          <mat-icon mat-icon-button class="btn" *ngIf="likeReplyReply" (click)="likeFunctionReplyReply(quest.id)">thumb_up_alt</mat-icon>
+                          <p class="likesCount">{{countReplyReply}} likes</p>
+                        </div> -->
+
+                      <div fxLayout="column">
+                        <!-- <mat-icon mat-icon-button class="btn" *ngIf="!like" (click)="likeFunction(note.questionAndAnswerNotes[0].id)">thumb_up_off_alt</mat-icon>
+                          <mat-icon mat-icon-button class="btn" *ngIf="like" (click)="likeFunction(note.questionAndAnswerNotes[0].id)">thumb_up_alt</mat-icon> -->
+                        <!-- <p class="likesCount">{{count}} likes</p> -->
+                        <mat-icon mat-icon-button class="btn" (click)="like1(quest.id)">thumb_up_off_alt</mat-icon>
+                        <mat-icon mat-icon-button class="btn" (click)="dislike1(quest.id)">thumb_down_off_alt</mat-icon>
+                        <!-- Count of Like -->
+                        <div *ngIf="counter(quest.like)">
+
+                        </div>
+                        <div>{{counting}} likes</div>
+                      </div>
+
+                      <bar-rating [(rate)]="rate" [max]="5" [theme]="'default'" [(ngModel)]="rate"></bar-rating>
                     </div>
+                    <mat-divider></mat-divider><br>
                   </div>
                 </div>
+              </div>
 
-                <!--reply of reply end-->
-              
-              
+              <!--reply of reply end-->
+
+
               <mat-divider></mat-divider><br>
             </div>
           </div>

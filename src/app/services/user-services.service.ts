@@ -313,4 +313,14 @@ export class UserServicesService {
     return this.http.post(this.link+"notes/"+options.noteId+"/checklist/add", options.data, httpOptions);
   }
 
+  LikeUnlikeService(options) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.post(this.link + options.purpose, options.data, httpOptions)
+  }
+
 }

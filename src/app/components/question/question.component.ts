@@ -23,6 +23,13 @@ export class QuestionComponent implements OnInit {
   viewReply1: any = false;
   viewReply2: boolean = false;
   toggle: boolean = false;
+  like: boolean = false;
+  likeReply: boolean = false;
+  likeReplyReply: boolean = false;
+  // count = 0;
+  // countReply = 0;
+  // countReplyReply = 0;
+  counting: any;
 
   constructor(private noteService: UserServicesService, public router: Router, public activ: ActivatedRoute) { }
 
@@ -111,6 +118,116 @@ export class QuestionComponent implements OnInit {
 
   toggleReply1(id) {
     this.viewReply1 = id;    
+  }
+
+  // likeFunction(id) {
+  //   this.like = !this.like;
+  //   let content = {
+  //     like: this.like,
+  //   }
+  //   let obj = {
+  //     data: content,
+  //     purpose: "questionAndAnswerNotes/like/" + id
+  //   }
+  //   this.noteService.LikeUnlikeService(obj).subscribe((result) => {
+  //     if(this.like==true) {
+  //       this.count++;
+  //     }
+  //     else {
+  //       this.count--;
+  //     }
+  //     console.log(result , this.like);
+  //   }, (error) => {
+  //     console.log(error);
+      
+  //   })
+  // }
+
+  like1(id){
+    let content = {
+           like: true,
+         }
+         let obj = {
+              data: content,
+              purpose: "questionAndAnswerNotes/like/" + id
+            }
+            this.noteService.LikeUnlikeService(obj).subscribe((result) => {
+              console.log(result);
+              this.getNoteDetail();
+            })
+  }
+
+  dislike1(id){
+    let content = {
+           like: false,
+         }
+         let obj = {
+              data: content,
+              purpose: "questionAndAnswerNotes/like/" + id
+            }
+            this.noteService.LikeUnlikeService(obj).subscribe((result) => {
+              console.log(result);
+              this.getNoteDetail();
+            })
+  }
+
+  likeFunctionReply(id) {
+    this.likeReply = !this.likeReply;
+    let content = {
+      like: this.likeReply,
+    }
+    let obj = {
+      data: content,
+      purpose: "questionAndAnswerNotes/like/" + id
+    }
+    this.noteService.LikeUnlikeService(obj).subscribe((result) => {
+      // if(this.likeReply==true) {
+      //   this.countReply++;
+      // }
+      // else {
+      //   this.countReply--;
+      // }
+      console.log(result);
+    }, (error) => {
+      console.log(error);
+      
+    })
+  }
+
+  likeFunctionReplyReply(id) {
+    this.likeReplyReply = !this.likeReplyReply;
+    let content = {
+      like: this.likeReplyReply,
+    }
+    let obj = {
+      data: content,
+      purpose: "questionAndAnswerNotes/like/" + id
+    }
+    this.noteService.LikeUnlikeService(obj).subscribe((result) => {
+      // if(this.likeReplyReply==true) {
+      //   this.countReplyReply++;
+      // }
+      // else {
+      //   this.countReplyReply--;
+      // }
+      console.log(result);
+    }, (error) => {
+      console.log(error);
+      
+    })
+  }
+
+  counter(likes){
+    console.log("likes....",likes);
+    this.counting = 0;
+    for(let i=0;i<likes.length;i++){
+      if(likes[i].like==true){
+        this.counting++;
+      }
+      
+    }
+   // console.log(this.counting);
+    
   }
 
 }

@@ -59,6 +59,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { CartComponent } from './components/cart/cart.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { BarRatingModule } from "ngx-bar-rating";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import { BarRatingModule } from "ngx-bar-rating";
     FroalaViewModule.forRoot(),
     MatTabsModule,
     MatStepperModule,
-    BarRatingModule
+    BarRatingModule,
+    NgxSpinnerModule
   ],
   providers: [
     UserServicesService,
