@@ -1,11 +1,11 @@
-<mat-card [ngStyle]="{'background-color': color}" fxLayout="row"
-    class="mat-card-note" fxLayoutAlign="space-between" fxFlex="100" fxLayoutGap="100">
+<mat-card [ngStyle]="{'background-color': color}" fxLayout="row" class="mat-card-note" fxLayoutAlign="space-between"
+    fxFlex="100" fxLayoutGap="100">
 
     <div fxFlex="100">
         <div fxLayout="row" fxLayoutAlign="space-between end">
             <textarea class="text-area" matInput cdkTextareaAutosize [ngStyle]="{'background-color': color}"
-                #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title"
-                placeholder="Title" value="{{data.title}}"></textarea>
+                #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"
+                value="{{data.title}}"></textarea>
             <button mat-icon-button>
                 <mat-icon matSuffix>turned_in_not</mat-icon>
             </button>
@@ -14,11 +14,79 @@
             <textarea class="text-area" [ngStyle]="{'background-color': color}" cdkTextareaAutosize
                 #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" [formControl]="note" matInput
                 placeholder="Take a note..." value="{{data.description}}"></textarea></div>
-        <mat-action-row fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutAlign.xs="center center">
-            <app-icon-list (messageEvent)="colorChange($event)"></app-icon-list>
-            <button style="float: right" matTooltip="Close and Save" fxLayoutAlign="end end" mat-button
-                (click)="close()">Close</button>
-        </mat-action-row>
+
+        <!--CHECKBOXES-->
+
+        <div *ngFor='let list of data.noteCheckLists' class="above">
+            <div *ngIf="list.status=='open' && list.status!='close' && !list.isDeleted" fxLayout="row"
+                fxLayoutAlign="space-between center" fxFlex="80">
+                <div fxLayout="row" fxFlex="100">
+                    <mat-icon (click)='removeCheckList(list, data.noteIdList)' class="visibleBox">
+                        check_box_outline_blank
+                    </mat-icon>
+                    <input class="checklist" width="70%" [(ngModel)]="list.itemName"
+                        (keyup)="updateList(list, data.noteIdList)" (keyup.enter)="textareachange($event)">
+                    <mat-icon class="visible" (click)="deleteCheckList(list,data.noteIdList)">clear</mat-icon>
+
+                </div>
+
+            </div>
+        </div>
+        <div *ngFor='let list of data.noteCheckLists' class="above">
+            <div *ngIf="list.status=='close' && !list.isDeleted" fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="row" fxFlex="100">
+                    <mat-icon (click)='addCheckList(list, data.noteIdList)' class="visibleBox">check_box</mat-icon>
+                    <input class="checklist" style="text-decoration:line-through;" [(ngModel)]="list.itemName"
+                        (keyup)="updateList(list, data.noteIdList)" (keydown.enter)="textareachange($event)">
+                    <mat-icon class="visible" (click)="deleteCheckList(list,data.noteIdList)">clear</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div *ngIf='listToggle && data.noteIdList == tempID' class="above">
+            <mat-divider></mat-divider>
+            <div fxLayout='row'>
+                <mat-icon>add</mat-icon><input (click)="$event.stopPropagation()" matInput [(ngModel)]="listItem"
+                    placeholder="List Here" (keydown.enter)='addlist(data.noteIdList, data.noteCheckLists)'>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+
+        <!--CHECKLIST ENDS-->
+
+        <mat-chip-list>
+            <div *ngFor="let label of data.noteLabels" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <mat-chip [ngStyle]="{'background-color': data.color}" class="label-chip">{{label.label}}<mat-icon
+                        class="label-cross" (click)="removeLabel(label.id,data.noteIdList)">cancel</mat-icon>
+                </mat-chip>
+            </div>
+        </mat-chip-list>
+
+        <mat-chip-list>
+            <div *ngFor="let remind of data.reminder" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <mat-chip [ngStyle]="{'background-color': data.color}" class="label-chip">{{remind | date: 'medium' }}
+                    <mat-icon class="label-cross" (click)="removeReminder(data.noteIdList)">clear</mat-icon>
+                </mat-chip>
+            </div>
+        </mat-chip-list>
+
+        <mat-chip-list>
+            <div *ngFor="let collab of data.collaborators" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <mat-icon (click)="openCollabDialog('Collab...', data.noteIdList)" matTooltip="{{collab.firstName}}">
+                    account_circle</mat-icon>
+            </div>
+        </mat-chip-list>
+        <br>
+        <div>
+            <mat-action-row fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutAlign.xs="center center">
+                <app-icon-list fxFlex="85" (messageEvent)="colorChange($event)" (labelEvent)="saveLabel($event, data.noteIdList)"
+                    (remindEvent)="saveReminder($event, data.noteIdList)"
+                    (collabEvent)="openCollabDialog($event, data.noteIdList)"
+                    (questionEvent)="gotoQuestion($event, data.noteIdList)"
+                    (checkEvent)="changeListToggle($event, data.noteIdList)"></app-icon-list>
+                <button style="float: right" matTooltip="Close and Save" fxLayoutAlign="end end" mat-button
+                    (click)="close()">Close</button>
+            </mat-action-row>
+        </div>
     </div>
 
 </mat-card>

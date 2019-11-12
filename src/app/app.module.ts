@@ -60,7 +60,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { BarRatingModule } from "ngx-bar-rating";
 import { NgxSpinnerModule } from "ngx-spinner";
-
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 @NgModule({
   declarations: [
 
@@ -125,7 +125,15 @@ import { NgxSpinnerModule } from "ngx-spinner";
     MatTabsModule,
     MatStepperModule,
     BarRatingModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.circle,
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)', 
+      backdropBorderRadius: '4px',
+      primaryColour: '#fffsff', 
+      secondaryColour: '#fsffff', 
+      tertiaryColour: '#ffsfff'
+  })
   ],
   providers: [
     UserServicesService,

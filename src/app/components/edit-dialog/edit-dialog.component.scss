@@ -12,3 +12,37 @@ textarea{
     border: none;
     outline: none;
 }
+
+.checklist {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.visible {
+    cursor: pointer;
+    opacity: 0.50;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.visibleBox {
+    cursor: pointer;
+}
+
+.label-chip {
+    .label-cross {
+        opacity: 0;
+    }
+    &:hover{
+        .label-cross{
+            opacity: 1;
+        }
+    }
+    opacity: 0.75;
+    &:hover {
+        opacity: 1;
+    }
+    filter: brightness(80%);
+}

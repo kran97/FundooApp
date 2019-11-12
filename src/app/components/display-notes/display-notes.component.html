@@ -1,3 +1,4 @@
+<ngx-loading [show]="loading"></ngx-loading>
 <div fxLayoutAlign="space-around center">
   <div fxFlex='80'>
     <div fxLayoutAlign="start start" fxLayoutAlign.sm="center stretch" fxLayout.xs="column" fxLayout.sm="column"
@@ -5,7 +6,7 @@
       <div fxLayoutAlign="start stretch" *ngFor="let record of records">
         <mat-card [fxFlex]="listView?'100':''" [ngClass]="listView?'card2':'card'" fxLayout="column"
           [ngStyle]="{'background-color': record.color}">
-          <div (click)="editDialog(record.title, record.description, record.color, record.id)" fxLayout="column">
+          <div (click)="editDialog(record.title, record.description, record.color, record.id, record.noteCheckLists, record.noteLabels, record.reminder, record.collaborators)" fxLayout="column">
             <!-- <p>{{record.title}}</p> -->
             <textarea class="text-area" matInput cdkTextareaAutosize [ngStyle]="{'background-color': record.color}" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="2" [(ngModel)]="record.title"></textarea>
             <textarea class="text-area" matInput cdkTextareaAutosize [ngStyle]="{'background-color': record.color}" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="15" [(ngModel)]="record.description"></textarea>

@@ -24,7 +24,7 @@ export class DisplayNotesComponent implements OnInit {
   label: any;
   listView: any = false;
   remind: any;
-
+  loading: boolean=false;
   list
   listItem
   listToggle: any;
@@ -45,14 +45,17 @@ export class DisplayNotesComponent implements OnInit {
   }
 
   receiveNotes() {
+    this.loading=true;
     let options = {
       purpose: 'notes/getNotesList'
     }
     return this.noteService.getNoteServices(options).subscribe((response: any) => {
       this.records = response.data.data.reverse().filter(function (notDeleted) {
         return (notDeleted.isDeleted == false && notDeleted.isArchived == false);
+        
       });
       console.log(this.records);
+      this.loading=false;
     }, (error) => {
       console.log(error);
     });
@@ -124,14 +127,18 @@ export class DisplayNotesComponent implements OnInit {
     }
   }
 
-  editDialog(title, description, color, id) {
+  editDialog(title, description, color, id, checklist, label, reminder, collaborators) {
     this.dialogRef = this.dialog.open(EditDialogComponent, {
       width: '450px',
       data: {
         noteIdList: id,
         title: title,
         description: description,
-        color: color
+        color: color,
+        noteCheckLists: checklist,
+        noteLabels: label,
+        reminder: reminder,
+        collaborators: collaborators
       },
       panelClass: 'custom-modalbox'
     });
