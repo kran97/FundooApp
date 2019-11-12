@@ -127,12 +127,12 @@ import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
     BarRatingModule,
     NgxSpinnerModule,
     NgxLoadingModule.forRoot({
-      animationType: ngxLoadingAnimationTypes.circle,
-      backdropBackgroundColour: 'rgba(0,0,0,0.1)', 
-      backdropBorderRadius: '4px',
-      primaryColour: '#fffsff', 
-      secondaryColour: '#fsffff', 
-      tertiaryColour: '#ffsfff'
+      animationType: ngxLoadingAnimationTypes.threeBounce,
+      backdropBackgroundColour: 'rgba(0,0,0,0)', 
+      backdropBorderRadius: '10px',
+      primaryColour: '#4285F4', 
+      secondaryColour: '#DB4437', 
+      tertiaryColour: '#F4B400'
   })
   ],
   providers: [

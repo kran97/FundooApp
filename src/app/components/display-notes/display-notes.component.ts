@@ -34,9 +34,9 @@ export class DisplayNotesComponent implements OnInit {
 
   ngOnInit() {
     this.receiveNotes();
-    // this.noteService.currentMessage.subscribe((res) => {
-    //   this.receiveNotes();
-    // });
+    this.noteService.currentMessage.subscribe((res) => {
+      this.receiveNotes();
+    });
     this.noteService.boolMessage.subscribe((res: any)=>{
       this.listView = res;
       this.receiveNotes();
